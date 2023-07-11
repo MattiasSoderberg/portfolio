@@ -23,7 +23,7 @@ const ProjectList = ({ rightPadding = false }: Props) => {
   };
 
   return (
-    <ul className="min-w-max h-full flex flex-col gap-4 pr-6 overflow-y-scroll z-10">
+    <ul className="min-w-max h-full flex flex-col gap-4 pr-8 overflow-y-scroll z-10">
       {projects.length > 0 &&
         projects.map((project) => (
           <li key={project?._id} className="w-max">
