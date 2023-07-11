@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import Modal from "@/components/library/Modal/Modal";
+import { AnimatePresence } from "framer-motion";
 
 interface Props {
   children: React.ReactNode;
@@ -49,7 +50,9 @@ export const ModalProvider = ({ children }: Props) => {
 
   return (
     <ModalContext.Provider value={value}>
-      {isModalOpen && <Modal content={modalContent} />}
+      <AnimatePresence>
+        {isModalOpen && <Modal content={modalContent} />}
+      </AnimatePresence>
       {children}
     </ModalContext.Provider>
   );
