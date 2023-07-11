@@ -28,28 +28,36 @@ const Modal = ({ content }: Props) => {
 
   const variants = {
     initial: { opacity: 0 },
-    visible: { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.2,
+        delayChildren: 0.15,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        delay: 0.15,
+      },
+    },
   };
 
   return (
-    // <AnimatePresence>
     <motion.div
       className="w-screen h-screen bg-bgModalOverlay flex justify-center items-center absolute top-0 left-0 z-20"
       variants={variants}
       initial="initial"
       animate="visible"
-      transition={{
-        duration: 0.2,
-        // ease: "easeInOut",
-        // when: "beforeChildren",
-        delayChildren: 0.15,
-      }}
+      exit="exit"
       key="modal-overlay"
     >
       <motion.section
         ref={ref}
         className={`w-fit h-fit relative bg-darkMain rounded p-12 modal-shadow ${modalShadows[content]}`}
         variants={variants}
+        exit={{ opacity: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         key="modal"
       >
@@ -65,7 +73,6 @@ const Modal = ({ content }: Props) => {
         {modalContent}
       </motion.section>
     </motion.div>
-    // </AnimatePresence>
   );
 };
 
