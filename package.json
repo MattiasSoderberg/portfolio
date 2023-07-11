@@ -9,15 +9,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/react": "^3.0.4",
+    "@sanity/image-url": "^1.0.2",
+    "@sanity/vision": "^3.14.1",
+    "@sendgrid/mail": "^7.7.0",
     "@types/node": "20.2.5",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
+    "framer-motion": "^10.12.16",
     "next": "13.4.4",
+    "next-sanity": "^5.1.0",
     "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.9.0",
+    "sanity": "^3.14.1",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "yup": "^1.2.0"
   }
 }
