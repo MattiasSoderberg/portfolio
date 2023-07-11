@@ -5,7 +5,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import useClickOutside from "@/hooks/useClickOutside";
 import useModal from "@/hooks/useModal";
 import ProjectView from "./ProjectView";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface Props {
   content: string;
