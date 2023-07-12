@@ -3,11 +3,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import Avatar from "./library/SVG/Avatar";
 import { IoMailOutline, IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
-import Link from "./Link";
+import Link from "./library/Link";
 import ButtonNaked from "./library/Button/variants/ButtonNaked";
 import SVGGradientWrapper from "./library/SVG/SVGGradientWrapper";
 import useModal from "@/hooks/useModal";
-import Modal from "./library/Modal/Modal";
 
 const Navigation = () => {
   const { openModal } = useModal();
@@ -17,8 +16,8 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center px-44 xl:h-[100px]">
-      <div className="w-full h-full max-w-screen-3xl flex justify-between items-center">
+    <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center xl:h-[100px]">
+      <div className="w-full h-full max-w-screen-3xl flex justify-between items-center px-40">
         <motion.div
           className="h-full py-5"
           initial={{ opacity: 0 }}
