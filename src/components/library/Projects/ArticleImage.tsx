@@ -1,9 +1,8 @@
 import React from "react";
-import imageUrlBuilder from "@sanity/image-url";
-import { client } from "../../../../sanity/lib/client";
 import { SanityDocument } from "next-sanity";
 import { getImageDimensions } from "@sanity/asset-utils";
 import Image from "next/image";
+import getImageUrl from "@/utils/getImageUrl";
 
 interface Props {
   project: SanityDocument;
@@ -11,7 +10,7 @@ interface Props {
 }
 
 const ArticleImage = ({ project, maxImageSize = 400 }: Props) => {
-  const builder = imageUrlBuilder(client);
+  const url = getImageUrl(project?.mainImage);
   const imageWidth = getImageDimensions(project?.mainImage).width;
   const imageHeight = getImageDimensions(project?.mainImage).height;
   const imageRatio = imageWidth / imageHeight;
@@ -23,7 +22,7 @@ const ArticleImage = ({ project, maxImageSize = 400 }: Props) => {
 
   return (
     <Image
-      src={builder.image(project?.mainImage).url()}
+      src={url}
       width={imageDimensions.width}
       height={Math.round(imageDimensions.height)}
       alt={
