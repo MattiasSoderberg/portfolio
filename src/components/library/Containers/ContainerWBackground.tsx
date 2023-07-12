@@ -4,7 +4,7 @@ import BackgroundSVG from "../SVG/BackgroundSVG";
 
 const ContainerWBackground = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="w-full h-full flex flex-col justify-center items-center relative">
+    <section className="w-full h-full flex flex-col justify-start items-center relative">
       <div className={`w-full h-full absolute top-0 left-0`}>
         <div className="w-full h-full px-10">
           <BackgroundSVG />
