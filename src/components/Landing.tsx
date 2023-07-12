@@ -10,13 +10,14 @@ import Divider from "./library/Divider";
 import ProjectList from "./library/Projects/ProjectList";
 import { SanityDocument } from "next-sanity";
 import { useProjectContext } from "@/context/ProjectContext";
+import LandingFooter from "./library/LandingFooter";
 
 interface Props {
   projects: SanityDocument[];
   landingContent: SanityDocument;
 }
 
-const Landing = ({ projects, landingContent: landingContent }: Props) => {
+const Landing = ({ projects, landingContent }: Props) => {
   const { handleSetProjectList } = useProjectContext();
   handleSetProjectList(projects);
 
@@ -76,7 +77,7 @@ const Landing = ({ projects, landingContent: landingContent }: Props) => {
             transition={{ duration: 0.7, staggerChildren: 0.5 }}
           >
             <motion.div
-              className="w-fit h-full flex flex-col gap-8 z-10"
+              className="w-fit h-full flex flex-col gap-10 z-10"
               variants={childVariants}
               transition={{ duration: 0.1, staggerChildren: 0.3 }}
             >
@@ -90,13 +91,22 @@ const Landing = ({ projects, landingContent: landingContent }: Props) => {
                 variants={textVariants}
                 transition={{ duration: 0.4 }}
               >
-                <H2>{landingContent?.subheading}</H2>
+                <H2 color="firstLighter">{landingContent?.subheading}</H2>
               </motion.div>
               <motion.div
                 variants={textVariants}
                 transition={{ duration: 0.4 }}
               >
-                <TextLarge>{landingContent?.text}</TextLarge>
+                <TextLarge color="firstLighter">
+                  {landingContent?.text}
+                </TextLarge>
+              </motion.div>
+              <motion.div
+                className="mt-auto"
+                variants={textVariants}
+                transition={{ duration: 0.4 }}
+              >
+                <LandingFooter document={landingContent} />
               </motion.div>
             </motion.div>
 
@@ -111,6 +121,7 @@ const Landing = ({ projects, landingContent: landingContent }: Props) => {
               <H2>Projects</H2>
               <ProjectList />
             </motion.div>
+            <motion.div></motion.div>
           </motion.div>
           <Corner position={POSITIONS.bottomLeft} />
           <Corner position={POSITIONS.bottomRight} />
