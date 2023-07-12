@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 export const POSITIONS = {
   topLeft: "topLeft",
@@ -24,10 +25,26 @@ const Corner = ({ position, small = false }: Props) => {
 
   const cornerClasses = `absolute ${positionClasses[position]}`;
 
+  const variants = {
+    initial: { borderRadius: "0px" },
+    visible: {
+      borderBottomRightRadius: "30px",
+      transition: { delay: 2, duration: 1.5 },
+    },
+  };
+
   return (
     <div className={cornerClasses}>
-      <div className="w-[250px] h-[10px] corner-linear-gradient-horizontal z-0" />
-      <div className="w-[10px] h-[240px] corner-linear-gradient-vertical z-0" />
+      <motion.div
+        variants={variants}
+        // transition={{ duration: 0.5 }}
+        className="w-[250px] h-[10px] corner-linear-gradient-horizontal z-0"
+      />
+      <motion.div
+        variants={variants}
+        // transition={{ duration: 0.5 }}
+        className="w-[10px] h-[240px] corner-linear-gradient-vertical z-0"
+      />
     </div>
   );
 };
