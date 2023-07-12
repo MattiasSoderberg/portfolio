@@ -32,16 +32,11 @@ module.exports = {
         navHeight: "70px",
       },
       maxWidth: {
-        "screen-3xl": "1800px", // max width for content container
+        "screen-3xl": "2000px", // max width for content container
       },
       maxHeight: {
-        "screen-3xl": "1000px", // 70% of maxWidth
+        "screen-3xl": "1400px", // 70% of maxWidth
       },
-      // backgroundImage: {
-      //   "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      //   "gradient-conic":
-      //     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      // },
     },
   },
   safelist: [
