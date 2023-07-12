@@ -34,18 +34,27 @@ const Navigation = () => {
         >
           <ButtonNaked fonts="text-3xl xl:text-4xl" onClick={handleOnMailClick}>
             <SVGGradientWrapper
+              iconId="nav-mail"
               IconElement={IoMailOutline}
               attribute="stroke"
             />
           </ButtonNaked>
           <Link href="https://github.com/MattiasSoderberg" target>
-            <SVGGradientWrapper IconElement={IoLogoGithub} attribute="fill" />
+            <SVGGradientWrapper
+              iconId="nav-github"
+              IconElement={IoLogoGithub}
+              attribute="fill"
+            />
           </Link>
           <Link
             href="https://www.linkedin.com/in/mattias-s%C3%B6derberg-b0b509103/"
             target
           >
-            <SVGGradientWrapper IconElement={IoLogoLinkedin} attribute="fill" />
+            <SVGGradientWrapper
+              IconElement={IoLogoLinkedin}
+              attribute="fill"
+              iconId="nav-linkedin"
+            />
           </Link>
         </motion.div>
       </div>

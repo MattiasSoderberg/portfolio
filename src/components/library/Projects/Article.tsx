@@ -26,12 +26,16 @@ const Article = () => {
         <div className="w-fit h-fit flex gap-8">
           {(currentProject?.url as string) && (
             <Link href={currentProject?.url as string} target>
-              <SVGGradientWrapper IconElement={IoOpenOutline} />
+              <SVGGradientWrapper
+                IconElement={IoOpenOutline}
+                iconId={currentProject?._id}
+              />
             </Link>
           )}
           {(currentProject?.githubUrl as string) && (
             <Link href={currentProject?.githubUrl as string} target>
               <SVGGradientWrapper
+                iconId={currentProject?._id}
                 IconElement={IoLogoGithub}
                 fromColor="secondLight"
                 toColor="secondLighter"
