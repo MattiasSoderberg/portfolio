@@ -28,8 +28,7 @@ const Landing = ({ projects, landingContent }: Props) => {
       transition: {
         delay: 2,
         duration: 0.8,
-        delayChildren: 2,
-        staggerChildren: 0.9,
+        staggerChildren: 0.6,
         ease: "easeInOut",
       },
     },
@@ -69,18 +68,18 @@ const Landing = ({ projects, landingContent }: Props) => {
             className="w-[500px] h-[500px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
             key="avatar"
             variants={avatarVariant}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7, delay: 1.8 }}
           >
             <Avatar color="thirdMain" />
           </motion.div>
           <motion.div
-            className="w-full h-full flex justify-between gap-16 p-32 pr-24 md:flex-row"
+            className="w-full h-full flex justify-between gap-16 p-32 pr-24 md:flex-row z-10"
             key="content"
             variants={childVariants}
             transition={{ duration: 0.7, staggerChildren: 0.5 }}
           >
             <motion.div
-              className="w-fit h-full flex flex-col gap-10 z-10"
+              className="w-fit h-full flex flex-col gap-10 pr-16"
               variants={childVariants}
               transition={{ duration: 0.1, staggerChildren: 0.3 }}
             >
@@ -113,17 +112,19 @@ const Landing = ({ projects, landingContent }: Props) => {
               </motion.div>
             </motion.div>
 
-            <motion.div variants={childVariants} transition={{ duration: 1 }}>
-              <Divider />
-            </motion.div>
-            <motion.div
-              className="flex flex-col gap-8"
-              variants={childVariants}
-              transition={{ duration: 0.4 }}
-            >
-              <H2>Projects</H2>
-              <ProjectList />
-            </motion.div>
+            <div className="flex gap-16">
+              <motion.div variants={childVariants} transition={{ duration: 1 }}>
+                <Divider />
+              </motion.div>
+              <motion.div
+                className="flex flex-col gap-8"
+                variants={childVariants}
+                transition={{ duration: 0.4 }}
+              >
+                <H2>Projects</H2>
+                <ProjectList />
+              </motion.div>
+            </div>
           </motion.div>
           <Corner position={POSITIONS.bottomLeft} />
           <Corner position={POSITIONS.bottomRight} />
