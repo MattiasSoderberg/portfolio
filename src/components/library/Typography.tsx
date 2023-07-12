@@ -21,7 +21,7 @@ const baseStyles = {
 
 const getStyles = (...params: string[]): string => {
   const [color, size, str] = params;
-  const classes = `text-${size} text-${color} ${str}`;
+  const classes = `text-${size} text-${color} ${str ? str : ""}`;
 
   return classes;
 };
@@ -66,6 +66,15 @@ export const TextRegular = ({
   children,
   color = baseStyles.color,
   size = "base",
+}: Props) => {
+  const classes = getStyles(color, size);
+  return <p className={classes}>{children}</p>;
+};
+
+export const TextSmall = ({
+  children,
+  color = baseStyles.color,
+  size = "sm",
 }: Props) => {
   const classes = getStyles(color, size);
   return <p className={classes}>{children}</p>;
