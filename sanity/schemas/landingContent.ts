@@ -20,5 +20,31 @@ export default defineType({
       title: "Text",
       type: "text",
     }),
+    defineField({
+      name: "landingFooter",
+      title: "Landing Footer",
+      type: "object",
+      fields: [
+        defineField({
+          name: "image",
+          title: "Image",
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [{ name: "alt", title: "Alt text", type: "string" }],
+        }),
+        defineField({
+          name: "text",
+          title: "Footer text",
+          type: "text",
+        }),
+        defineField({
+          name: "buttonText",
+          title: "Footer Button text",
+          type: "string",
+        }),
+      ],
+    }),
   ],
 });
