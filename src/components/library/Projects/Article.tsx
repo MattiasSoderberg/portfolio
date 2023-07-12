@@ -5,19 +5,18 @@ import { H3 } from "../Typography";
 import components from "./ArticleTextComponents";
 import { PortableTextBlock } from "@portabletext/types";
 import ArticleImage from "./ArticleImage";
-import Link from "@/components/Link";
+import Link from "@/components/library/Link";
 import SVGGradientWrapper from "../SVG/SVGGradientWrapper";
 import { IoLogoGithub, IoOpenOutline } from "react-icons/io5";
 
 const Article = () => {
   const { currentProject } = useProjectContext();
-  console.log("ARTICLE", currentProject); // TODO REMOVE
 
   return (
     currentProject && (
       <div className="w-full h-full flex flex-col gap-8 px-10 overflow-y-scroll">
         <H3 size="3xl">{currentProject?.title as string}</H3>
-        {(currentProject?.mainImage as string) && (
+        {(currentProject?.mainImage as any) && (
           <ArticleImage project={currentProject} />
         )}
         <PortableText
