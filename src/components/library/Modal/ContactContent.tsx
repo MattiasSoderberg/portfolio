@@ -139,7 +139,9 @@ const ContactContent = () => {
       <div className="h-fit">
         {validationErrors.length > 0 &&
           validationErrors.map((error) => (
-            <TextLarge color="thirdLight">{error?.message}</TextLarge>
+            <TextLarge color="thirdLight" key={error?.message}>
+              {error?.message}
+            </TextLarge>
           ))}
       </div>
     </div>
