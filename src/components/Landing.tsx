@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import ContainerWBackground from "./library/Containers/ContainerWBackground";
 import { H1, H2, TextLarge } from "./library/Typography";
@@ -19,7 +19,6 @@ interface Props {
 
 const Landing = ({ projects, landingContent }: Props) => {
   const { handleSetProjectList } = useProjectContext();
-  handleSetProjectList(projects);
 
   const parentVariants = {
     initial: { width: "500px", height: "500px" },
@@ -50,6 +49,10 @@ const Landing = ({ projects, landingContent }: Props) => {
     initial: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0 },
   };
+
+  useEffect(() => {
+    handleSetProjectList(projects);
+  }, []);
 
   return (
     <ContainerWBackground>
@@ -121,7 +124,6 @@ const Landing = ({ projects, landingContent }: Props) => {
               <H2>Projects</H2>
               <ProjectList />
             </motion.div>
-            <motion.div></motion.div>
           </motion.div>
           <Corner position={POSITIONS.bottomLeft} />
           <Corner position={POSITIONS.bottomRight} />
