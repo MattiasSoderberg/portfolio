@@ -43,6 +43,7 @@ module.exports = {
     {
       pattern:
         /(text|bg|top)-(lightMain|darkMain|firstLight|firstMain|secondLight|secondMain|thirdLight|thirdMain|navHeight)/,
+      variants: ["hover"],
     },
     {
       pattern: /(text)-(lg|xl|2xl|3xl|4xl|5xl)/,
