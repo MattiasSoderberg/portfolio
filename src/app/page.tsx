@@ -17,7 +17,7 @@ export default async function Home() {
     <div className="w-screen h-screen flex flex-col relative">
       <ContextProvider>
         <Navigation />
-        <main className="w-full h-full overflow-hidden">
+        <main className="w-full h-full flex justify-center bg-darkMain overflow-hidden">
           <Landing projects={projects} landingContent={landingContent[0]} />
         </main>
       </ContextProvider>
