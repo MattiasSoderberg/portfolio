@@ -2,7 +2,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Avatar from "./library/SVG/Avatar";
-import { IoMailOutline, IoLogoGithub, IoLogoLinkedin } from "react-icons/io5";
+import {
+  IoMailOutline,
+  IoLogoGithub,
+  IoLogoLinkedin,
+  IoMenu,
+} from "react-icons/io5";
 import Link from "./library/Link";
 import ButtonNaked from "./library/Button/variants/ButtonNaked";
 import SVGGradientWrapper from "./library/SVG/SVGGradientWrapper";
@@ -17,17 +22,22 @@ const Navigation = () => {
 
   return (
     <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center xl:h-[100px]">
-      <div className="w-full h-full max-w-screen-3xl flex justify-between items-center px-40">
+      <div className="w-full h-full max-w-screen-3xl flex justify-between items-center px-2 md:px-10 lg:px-20 2xl:px-40">
         <motion.div
-          className="h-full py-5"
+          className="h-full py-5 hidden md:block"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.1, duration: 0.7 }}
         >
           <Avatar color="thirdMain" />
         </motion.div>
+        <div className="block md:hidden">
+          <ButtonNaked fonts="text-thirdMain text-3xl">
+            <IoMenu />
+          </ButtonNaked>
+        </div>
         <motion.div
-          className="w-full max-w-[200px] flex justify-between items-center text-3xl"
+          className="w-full max-w-[150px] md:max-w-[200px] flex justify-between items-center text-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.8, duration: 0.3 }}

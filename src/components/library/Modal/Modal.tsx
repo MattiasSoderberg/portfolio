@@ -55,7 +55,7 @@ const Modal = ({ content }: Props) => {
     >
       <motion.section
         ref={ref}
-        className={`w-fit h-fit relative bg-darkMain rounded p-12 modal-shadow ${modalShadows[content]}`}
+        className={`w-full h-full relative bg-darkMain rounded p-6 md:p-12 modal-shadow ${modalShadows[content]} sm:w-fit sm:h-fit`}
         variants={variants}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}

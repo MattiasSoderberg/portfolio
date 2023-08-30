@@ -7,8 +7,8 @@ interface Props {
 }
 
 const Divider = ({ horizontal = false, wide = true }: Props) => {
-  const horizontalSize = wide ? "w-full h-[6px]" : "w-full h-[2px]";
-  const verticalSize = wide ? "w-[6px] h-full" : "w-[2px] h-full";
+  const horizontalSize = wide ? "w-full h-[4px] lg:h-[6px]" : "w-full h-[2px]";
+  const verticalSize = wide ? "w-[4px] lg:w-[6px] h-full" : "w-[2px] h-full";
 
   const classes = horizontal
     ? `divider-linear-gradient-horizontal ${horizontalSize}`

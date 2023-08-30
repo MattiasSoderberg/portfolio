@@ -3,6 +3,7 @@ import React from "react";
 const stylePropTypes = {
   color: "color",
   size: "size",
+  fonts: "fonts",
 } as const;
 
 type StyleProps = {
@@ -11,6 +12,7 @@ type StyleProps = {
 
 interface CommonProps {
   children: React.ReactNode | string;
+  classNames?: string;
 }
 
 type Props = CommonProps & StyleProps;
@@ -29,53 +31,56 @@ const getStyles = (...params: string[]): string => {
 export const H1 = ({
   children,
   color = baseStyles.color,
-  size = "5xl font-medium",
+  size = "text-4xl 2xl:text-5xl",
+  fonts = "font-medium",
 }: Props) => {
-  const classes = getStyles(color, size);
-  return <h1 className={classes}>{children}</h1>;
+  const textColor = `text-${color}`;
+  return (
+    <h1 className={`${size} ${textColor} ${fonts ? fonts : ""}`}>{children}</h1>
+  );
 };
 
 export const H2 = ({
   children,
   color = baseStyles.color,
-  size = "3xl",
+  size = "text-xl lg:text-2xl 2xl:text-3xl",
 }: Props) => {
-  const classes = getStyles(color, size);
-  return <h2 className={classes}>{children}</h2>;
+  const textColor = `text-${color}`;
+  return <h2 className={`${textColor} ${size}`}>{children}</h2>;
 };
 
 export const H3 = ({
   children,
   color = baseStyles.color,
-  size = "xl",
+  size = "text-base lg:text-lg 2xl:text-xl",
 }: Props) => {
-  const classes = getStyles(color, size);
-  return <h3 className={classes}>{children}</h3>;
+  const textColor = `text-${color}`;
+  return <h3 className={`${textColor} ${size}`}>{children}</h3>;
 };
 
 export const TextLarge = ({
   children,
   color = baseStyles.color,
-  size = "lg",
+  size = "text-base xl:text-lg",
 }: Props) => {
-  const classes = getStyles(color, size);
-  return <p className={classes}>{children}</p>;
+  const textColor = `text-${color}`;
+  return <p className={`${textColor} ${size}`}>{children}</p>;
 };
 
 export const TextRegular = ({
   children,
   color = baseStyles.color,
-  size = "base",
+  size = "text-sm xl:text-base",
 }: Props) => {
-  const classes = getStyles(color, size);
-  return <p className={classes}>{children}</p>;
+  const textColor = `text-${color}`;
+  return <p className={`${textColor} ${size}`}>{children}</p>;
 };
 
 export const TextSmall = ({
   children,
   color = baseStyles.color,
-  size = "sm",
+  size = "text-xs xl:text-sm",
 }: Props) => {
-  const classes = getStyles(color, size);
-  return <p className={classes}>{children}</p>;
+  const textColor = `text-${color}`;
+  return <p className={`${textColor} ${size}`}>{children}</p>;
 };

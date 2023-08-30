@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import ContainerWBackground from "./library/Containers/ContainerWBackground";
 import { H1, H2, TextLarge } from "./library/Typography";
 import Corner, { POSITIONS } from "./library/Corner";
 import ContentContainer from "./library/Containers/ContentContainer";
@@ -72,26 +71,37 @@ const Landing = ({ projects, landingContent }: Props) => {
         <Corner position={POSITIONS.topLeft} />
         <Corner position={POSITIONS.topRight} />
         <motion.div
-          className="w-full h-full flex justify-between gap-16 p-32 pr-24 md:flex-row z-10"
+          className="w-full h-full flex justify-between gap-4 p-7 z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 2xl:p-32"
           variants={childVariants}
           transition={{ duration: 0.7, staggerChildren: 0.7 }}
         >
           <motion.div
-            className="w-fit h-full flex flex-col gap-10 pr-16"
+            className="w-fit h-full flex flex-col justify-between p-0 lg:pr-8 2xl:pr-16"
             variants={childVariants}
             transition={{ duration: 0.3, staggerChildren: 0.4 }}
           >
-            <motion.div variants={childVariants} transition={{ duration: 0.4 }}>
-              <H1>{landingContent?.heading}</H1>
-            </motion.div>
-            <motion.div variants={textVariants} transition={{ duration: 0.4 }}>
-              <H2 color="firstLighter">{landingContent?.subheading}</H2>
-            </motion.div>
-            <motion.div variants={textVariants} transition={{ duration: 0.4 }}>
-              <TextLarge color="lightMain">{landingContent?.text}</TextLarge>
-            </motion.div>
+            <div className="flex flex-col gap-6 sm:gap-10">
+              <motion.div
+                variants={childVariants}
+                transition={{ duration: 0.4 }}
+              >
+                <H1>{landingContent?.heading}</H1>
+              </motion.div>
+              <motion.div
+                variants={textVariants}
+                transition={{ duration: 0.4 }}
+              >
+                <H2 color="firstLighter">{landingContent?.subheading}</H2>
+              </motion.div>
+              <motion.div
+                variants={textVariants}
+                transition={{ duration: 0.4 }}
+              >
+                <TextLarge color="lightMain">{landingContent?.text}</TextLarge>
+              </motion.div>
+            </div>
             <motion.div
-              className="mt-auto"
+              // className="sm:mt-auto"
               variants={textVariants}
               transition={{ duration: 0.4 }}
             >
@@ -99,7 +109,7 @@ const Landing = ({ projects, landingContent }: Props) => {
             </motion.div>
           </motion.div>
 
-          <div className="flex gap-16">
+          <div className="hidden gap-8 xl:gap-16 md:flex">
             <motion.div
               variants={{
                 initial: { height: 0 },

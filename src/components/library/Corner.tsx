@@ -38,12 +38,12 @@ const Corner = ({ position, small = false }: Props) => {
       <motion.div
         variants={variants}
         // transition={{ duration: 0.5 }}
-        className="w-[250px] h-[10px] corner-linear-gradient-horizontal z-0"
+        className="w-[150px] sm:w-[250px] h-[5px] lg:h-[8px] xl:h-[10px] corner-linear-gradient-horizontal z-0"
       />
       <motion.div
         variants={variants}
         // transition={{ duration: 0.5 }}
-        className="w-[10px] h-[240px] corner-linear-gradient-vertical z-0"
+        className="w-[5px] lg:w-[8px] xl:w-[10px] h-[145px] lg:h-[242px] xl:h-[240px] corner-linear-gradient-vertical z-0"
       />
     </div>
   );

@@ -23,12 +23,12 @@ const ProjectList = ({ rightPadding = false }: Props) => {
   };
 
   return (
-    <ul className="min-w-max h-full flex flex-col gap-4 pr-8 overflow-y-scroll z-10">
+    <ul className="min-w-max h-full flex flex-col gap-4 overflow-y-scroll z-10">
       {projects.length > 0 &&
         projects.map((project) => (
           <li key={project?._id} className="w-max">
             <ButtonNaked
-              fonts="text-left text-lg"
+              fonts="text-left text-base xl:text-lg"
               onClick={() => onClick(project)}
               hovers="hover:text-lightDarker"
             >

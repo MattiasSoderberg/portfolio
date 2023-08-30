@@ -89,7 +89,7 @@ const ContactContent = () => {
 
   return (
     // <div className="w-[630px] h-[780px] flex flex-col gap-8 p-12 bg-darkMain rounded modal-shadow shadow-thirdLight">
-    <div className="w-[600px] h-[680px] flex flex-col gap-8">
+    <div className="w-full h-full min-w-[250px] min-h-[400px] max-w-[600px] max-h-[680px] flex flex-col gap-8">
       <H2>Contact</H2>
       <form
         ref={form}
