@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 interface Props {
   horizontal?: boolean;
@@ -12,7 +13,7 @@ const Divider = ({ horizontal = false, wide = true }: Props) => {
   const classes = horizontal
     ? `divider-linear-gradient-horizontal ${horizontalSize}`
     : `divider-linear-gradient-vertical self-center ${verticalSize} rounded-s-lg`;
-  return <div className={classes} />;
+  return <motion.div className={classes} />;
 };
 
 export default Divider;
