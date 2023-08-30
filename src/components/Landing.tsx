@@ -41,7 +41,7 @@ const Landing = ({ projects, landingContent }: Props) => {
 
   const avatarVariant = {
     initial: { opacity: 1 },
-    visible: { opacity: 0.02 },
+    visible: { opacity: 0.05 },
   };
 
   const textVariants = {
@@ -54,83 +54,75 @@ const Landing = ({ projects, landingContent }: Props) => {
   }, []);
 
   return (
-    <ContainerWBackground>
-      <ContentContainer>
+    <ContentContainer>
+      <motion.div
+        className="w-[500px] h-[500px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 -mt-7 z-0"
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0.04 }}
+        transition={{ duration: 0.9, delay: 1.8 }}
+      >
+        <Avatar color="thirdMain" />
+      </motion.div>
+      <motion.div
+        className="w-full h-full relative"
+        variants={parentVariants}
+        initial="initial"
+        animate="visible"
+      >
+        <Corner position={POSITIONS.topLeft} />
+        <Corner position={POSITIONS.topRight} />
         <motion.div
-          className="w-full h-full relative"
-          variants={parentVariants}
-          initial="initial"
-          animate="visible"
+          className="w-full h-full flex justify-between gap-16 p-32 pr-24 md:flex-row z-10"
+          variants={childVariants}
+          transition={{ duration: 0.7, staggerChildren: 0.7 }}
         >
-          <Corner position={POSITIONS.topLeft} />
-          <Corner position={POSITIONS.topRight} />
           <motion.div
-            className="w-[500px] h-[500px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
-            key="avatar"
-            variants={avatarVariant}
-            transition={{ duration: 0.7, delay: 1.8 }}
-          >
-            <Avatar color="thirdMain" />
-          </motion.div>
-          <motion.div
-            className="w-full h-full flex justify-between gap-16 p-32 pr-24 md:flex-row z-10"
-            key="content"
+            className="w-fit h-full flex flex-col gap-10 pr-16"
             variants={childVariants}
-            transition={{ duration: 0.7, staggerChildren: 0.5 }}
+            transition={{ duration: 0.3, staggerChildren: 0.4 }}
           >
-            <motion.div
-              className="w-fit h-full flex flex-col gap-10 pr-16"
-              variants={childVariants}
-              transition={{ duration: 0.1, staggerChildren: 0.3 }}
-            >
-              <motion.div
-                variants={childVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <H1>{landingContent?.heading}</H1>
-              </motion.div>
-              <motion.div
-                variants={textVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <H2 color="firstLighter">{landingContent?.subheading}</H2>
-              </motion.div>
-              <motion.div
-                variants={textVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <TextLarge color="firstLighter">
-                  {landingContent?.text}
-                </TextLarge>
-              </motion.div>
-              <motion.div
-                className="mt-auto"
-                variants={textVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <LandingFooter document={landingContent} />
-              </motion.div>
+            <motion.div variants={childVariants} transition={{ duration: 0.4 }}>
+              <H1>{landingContent?.heading}</H1>
             </motion.div>
-
-            <div className="flex gap-16">
-              <motion.div variants={childVariants} transition={{ duration: 1 }}>
-                <Divider />
-              </motion.div>
-              <motion.div
-                className="flex flex-col gap-8"
-                variants={childVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <H2>Projects</H2>
-                <ProjectList />
-              </motion.div>
-            </div>
+            <motion.div variants={textVariants} transition={{ duration: 0.4 }}>
+              <H2 color="firstLighter">{landingContent?.subheading}</H2>
+            </motion.div>
+            <motion.div variants={textVariants} transition={{ duration: 0.4 }}>
+              <TextLarge color="lightMain">{landingContent?.text}</TextLarge>
+            </motion.div>
+            <motion.div
+              className="mt-auto"
+              variants={textVariants}
+              transition={{ duration: 0.4 }}
+            >
+              <LandingFooter document={landingContent} />
+            </motion.div>
           </motion.div>
-          <Corner position={POSITIONS.bottomLeft} />
-          <Corner position={POSITIONS.bottomRight} />
+
+          <div className="flex gap-16">
+            <motion.div
+              variants={{
+                initial: { height: 0 },
+                visible: { height: "100%" },
+              }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+            >
+              <Divider />
+            </motion.div>
+            <motion.div
+              className="flex flex-col gap-8"
+              variants={childVariants}
+              transition={{ duration: 0.4 }}
+            >
+              <H2>Projects</H2>
+              <ProjectList />
+            </motion.div>
+          </div>
         </motion.div>
-      </ContentContainer>
-    </ContainerWBackground>
+        <Corner position={POSITIONS.bottomLeft} />
+        <Corner position={POSITIONS.bottomRight} />
+      </motion.div>
+    </ContentContainer>
   );
 };
 
