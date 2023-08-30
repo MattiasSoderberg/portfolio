@@ -29,7 +29,7 @@ const Corner = ({ position, small = false }: Props) => {
     initial: { borderRadius: "0px" },
     visible: {
       borderBottomRightRadius: "30px",
-      transition: { delay: 2, duration: 1.5 },
+      transition: { delay: 2.5, duration: 1 },
     },
   };
 
