@@ -32,7 +32,7 @@ const Modal = ({ content }: Props) => {
       opacity: 1,
       transition: {
         duration: 0.2,
-        delayChildren: 0.15,
+        delayChildren: 0.05,
       },
     },
     exit: {
