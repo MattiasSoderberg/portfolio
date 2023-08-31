@@ -37,6 +37,9 @@ module.exports = {
       maxHeight: {
         "screen-3xl": "1100px", // max height for content container
       },
+      screens: {
+        "3xl": "2000px",
+      },
     },
   },
   safelist: [
