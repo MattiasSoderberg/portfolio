@@ -29,10 +29,10 @@ const Navigation = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.1, duration: 0.7 }}
         >
-          <Avatar color="thirdMain" />
+          <Avatar color="firstLighter" />
         </motion.div>
         <div className="block md:hidden">
-          <ButtonNaked fonts="text-thirdMain text-3xl">
+          <ButtonNaked fonts="text-firstLighter text-3xl">
             <IoMenu />
           </ButtonNaked>
         </div>
