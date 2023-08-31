@@ -43,7 +43,7 @@ export const H1 = ({
 export const H2 = ({
   children,
   color = baseStyles.color,
-  size = "text-xl lg:text-2xl 2xl:text-3xl",
+  size = "text-xl lg:text-2xl 3xl:text-3xl",
 }: Props) => {
   const textColor = `text-${color}`;
   return <h2 className={`${textColor} ${size}`}>{children}</h2>;
