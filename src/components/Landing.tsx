@@ -71,7 +71,7 @@ const Landing = ({ projects, landingContent }: Props) => {
         <Corner position={POSITIONS.topLeft} />
         <Corner position={POSITIONS.topRight} />
         <motion.div
-          className="w-full h-full flex justify-between gap-4 p-7 z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 2xl:p-32"
+          className="w-full h-full flex justify-between gap-4 p-7 z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 3xl:p-28"
           variants={childVariants}
           transition={{ duration: 0.7, staggerChildren: 0.7 }}
         >
