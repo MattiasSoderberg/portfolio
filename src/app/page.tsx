@@ -14,13 +14,10 @@ export default async function Home() {
   const { projects, landingContent } = await getData();
 
   return (
-    <div className="w-screen h-screen flex flex-col relative">
-      <ContextProvider>
-        <Navigation />
-        <main className="w-full h-full flex justify-center bg-darkMain overflow-hidden">
-          <Landing projects={projects} landingContent={landingContent[0]} />
-        </main>
-      </ContextProvider>
+    <div className="w-full h-full relative">
+      <main className="w-full h-full bg-darkMain">
+        <Landing projects={projects} landingContent={landingContent[0]} />
+      </main>
     </div>
   );
 }
