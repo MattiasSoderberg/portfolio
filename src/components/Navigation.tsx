@@ -21,11 +21,15 @@ const Navigation = () => {
     openModal("contact");
   };
 
+  const handleOnMenuClick = () => {
+    openModal("menu");
+  };
+
   return (
     <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center 3xl:h-[100px] z-10">
       <div className="w-full h-full max-w-screen-3xl flex justify-between items-center px-2 md:px-10 lg:px-20 2xl:px-40">
         <motion.div
-          className="h-full py-5 hidden md:block"
+          className="h-full py-4 hidden md:block"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.1, duration: 0.7 }}
@@ -35,16 +39,30 @@ const Navigation = () => {
           </NextLink>
         </motion.div>
         <div className="block md:hidden">
-          <ButtonNaked fonts="text-firstLighter text-3xl">
-            <IoMenu />
+          <ButtonNaked
+            fonts="text-firstLighter text-3xl"
+            onClick={handleOnMenuClick}
+          >
+            <SVGGradientWrapper
+              iconId="menu"
+              IconElement={IoMenu}
+              attribute="stroke"
+              fromColor="secondMain"
+              toColor="secondLighter"
+            />
           </ButtonNaked>
         </div>
         <motion.div
-          className="w-full max-w-[150px] md:max-w-[200px] flex justify-between items-center text-3xl"
+          className="w-full max-w-[200px] flex justify-between items-center text-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 2.8, duration: 0.3 }}
         >
+          <div className="w-fit h-[28px] md:hidden">
+            <NextLink href="/">
+              <Avatar color="firstLighter" />
+            </NextLink>
+          </div>
           <ButtonNaked fonts="text-3xl xl:text-4xl" onClick={handleOnMailClick}>
             <SVGGradientWrapper
               iconId="nav-mail"
