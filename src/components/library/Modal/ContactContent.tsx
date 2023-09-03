@@ -59,7 +59,7 @@ const ContactContent = () => {
 
       setResponseMessage({ isSending: true, message: "Sending email..." });
 
-      const url = "api/email";
+      const url = "/api/email";
       const response = await fetch(url, {
         headers: {
           "Content-Type": "application/json",
