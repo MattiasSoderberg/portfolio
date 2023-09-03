@@ -4,19 +4,17 @@ import ButtonNaked from "../Button/variants/ButtonNaked";
 import { IoCloseOutline } from "react-icons/io5";
 import useClickOutside from "@/hooks/useClickOutside";
 import useModal from "@/hooks/useModal";
-import ProjectView from "./ProjectView";
 import { motion } from "framer-motion";
 
 interface Props {
-  content: string;
+  modalType: string;
 }
 
-const Modal = ({ content }: Props) => {
+const Modal = ({ modalType }: Props) => {
   const { closeModal } = useModal();
   const ref = useClickOutside(closeModal);
   const modalTypes: { [key: string]: JSX.Element | null } = {
     contact: <ContactContent />,
-    projects: <ProjectView />,
     none: null,
   };
   const modalShadows: { [key: string]: string } = {
@@ -24,7 +22,7 @@ const Modal = ({ content }: Props) => {
     projects: "shadow-secondMain",
   };
 
-  const modalContent = modalTypes[content];
+  const modal = modalTypes[modalType];
 
   const variants = {
     initial: { opacity: 0 },
@@ -55,22 +53,23 @@ const Modal = ({ content }: Props) => {
     >
       <motion.section
         ref={ref}
-        className={`w-full h-full relative bg-darkMain rounded p-6 md:p-12 modal-shadow ${modalShadows[content]} sm:w-fit sm:h-fit`}
+        className={`w-full h-full relative bg-darkMain rounded-sm p-6 md:p-12 sm:modal-shadow ${modalShadows[modalType]} sm:w-fit sm:h-fit`}
         variants={variants}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
         key="modal"
       >
-        <div className="absolute top-5 right-5 bg-[#363738]">
+        <div className="absolute top-5 right-5">
           <ButtonNaked
             onClick={closeModal}
             borders="border border-1 border-lightMain"
-            hovers="hover:bg-darkLight"
+            background="bg-darkLight"
+            hovers="hover:bg-darkLighter"
           >
             <IoCloseOutline />
           </ButtonNaked>
         </div>
-        {modalContent}
+        {modal}
       </motion.section>
     </motion.div>
   );
