@@ -42,13 +42,13 @@ const Corner = ({ position, small = false, color = "landing" }: Props) => {
     <div className={cornerClasses}>
       <motion.div
         variants={variants}
-        className={`w-[150px] xl:w-[250px] h-[5px] xl:h-[8px] 2xl:h-[10px] ${styleClasses}`}
+        className={`w-[150px] lg:w-[250px] h-[5px] lg:h-[8px] 2xl:h-[10px] ${styleClasses}`}
       >
         <div className="w-full h-full corner-linear-gradient-horizontal-overlay" />
       </motion.div>
       <motion.div
         variants={variants}
-        className={`w-[5px] xl:w-[8px] 2xl:w-[10px] h-[145px] xl:h-[242px] 2xl:h-[240px] ${styleClasses}`}
+        className={`w-[5px] lg:w-[8px] 2xl:w-[10px] h-[145px] lg:h-[242px] 2xl:h-[240px] ${styleClasses}`}
       >
         <div className="w-full h-full corner-linear-gradient-vertical-overlay" />
       </motion.div>
