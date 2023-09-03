@@ -21,17 +21,10 @@ const baseStyles = {
   color: "lightMain",
 };
 
-const getStyles = (...params: string[]): string => {
-  const [color, size, str] = params;
-  const classes = `text-${size} text-${color} ${str ? str : ""}`;
-
-  return classes;
-};
-
 export const H1 = ({
   children,
   color = baseStyles.color,
-  size = "text-4xl 2xl:text-5xl",
+  size = "text-4xl xl:text-5xl 3xl:text-6xl",
   fonts = "font-medium",
 }: Props) => {
   const textColor = `text-${color}`;
@@ -43,7 +36,7 @@ export const H1 = ({
 export const H2 = ({
   children,
   color = baseStyles.color,
-  size = "text-xl lg:text-2xl 3xl:text-3xl",
+  size = "text-xl xl:text-2xl 3xl:text-3xl",
 }: Props) => {
   const textColor = `text-${color}`;
   return <h2 className={`${textColor} ${size}`}>{children}</h2>;
@@ -61,7 +54,7 @@ export const H3 = ({
 export const TextLarge = ({
   children,
   color = baseStyles.color,
-  size = "text-base xl:text-lg",
+  size = "text-base xl:text-lg 3xl:text-xl",
 }: Props) => {
   const textColor = `text-${color}`;
   return <p className={`${textColor} ${size}`}>{children}</p>;
@@ -70,7 +63,7 @@ export const TextLarge = ({
 export const TextRegular = ({
   children,
   color = baseStyles.color,
-  size = "text-sm xl:text-base",
+  size = "text-sm xl:text-base 3xl:text-lg",
 }: Props) => {
   const textColor = `text-${color}`;
   return <p className={`${textColor} ${size}`}>{children}</p>;
