@@ -38,7 +38,12 @@ const Navigation = () => {
             <Avatar color="firstLighter" />
           </NextLink>
         </motion.div>
-        <div className="block md:hidden">
+        <motion.div
+          className="block md:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2.1, duration: 0.7 }}
+        >
           <ButtonNaked
             fonts="text-firstLighter text-3xl"
             onClick={handleOnMenuClick}
@@ -51,7 +56,7 @@ const Navigation = () => {
               toColor="secondLighter"
             />
           </ButtonNaked>
-        </div>
+        </motion.div>
         <motion.div
           className="w-full max-w-[200px] flex justify-between items-center text-3xl"
           initial={{ opacity: 0 }}
