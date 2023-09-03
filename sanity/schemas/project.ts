@@ -1,4 +1,8 @@
-import { defineType, defineField, defineArrayMember } from "sanity";
+import {
+  defineType,
+  defineField,
+  defineArrayMember,
+} from "@sanity-typed/types";
 
 export default defineType({
   name: "project",
@@ -27,6 +31,7 @@ export default defineType({
           type: "block",
           styles: [
             { title: "Normal", value: "normal" },
+            { title: "H1", value: "h1" },
             { title: "H2", value: "h2" },
             { title: "H3", value: "h3" },
             // { title: "Code", value: "code" },
@@ -74,10 +79,10 @@ export default defineType({
       title: "Images",
       type: "array",
       of: [
-        {
+        defineArrayMember({
           type: "image",
           fields: [{ name: "alt", type: "string", title: "Alt text" }],
-        },
+        }),
       ],
     }),
   ],
