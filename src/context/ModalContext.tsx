@@ -2,12 +2,13 @@
 import React, { createContext, useContext, useState } from "react";
 import Modal from "@/components/library/Modal/Modal";
 import { AnimatePresence } from "framer-motion";
+import Drawer from "@/components/library/Modal/Drawer";
 
 interface Props {
   children: React.ReactNode;
 }
 
-type ModalTypes = "contact" | "projects" | "none";
+type ModalTypes = "contact" | "menu" | "none";
 
 interface ModalContextType {
   handleOnOpen: (content: ModalTypes) => void;
@@ -61,7 +62,8 @@ export const ModalProvider = ({ children }: Props) => {
   return (
     <ModalContext.Provider value={value}>
       <AnimatePresence>
-        {isModalOpen && <Modal modalType={modalType} />}
+        {isModalOpen && modalType != "menu" && <Modal modalType={modalType} />}
+        {isModalOpen && modalType == "menu" && <Drawer />}
       </AnimatePresence>
       {children}
     </ModalContext.Provider>
