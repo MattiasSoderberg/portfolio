@@ -6,13 +6,19 @@ import { POSITIONS } from "../Corner";
 import Avatar from "../SVG/Avatar";
 import Corner from "../Corner";
 import { useParams } from "next/navigation";
+import useWindowSize from "@/hooks/useWindowSize";
 
 const ContentContainer = ({ children }: { children: React.ReactNode }) => {
   const params = useParams();
   const { slug } = params;
 
+  const { width } = useWindowSize();
+
   const parentVariants = {
-    initial: { width: "500px", height: "500px" },
+    initial:
+      width < 1024
+        ? { width: "300px", height: "300px" }
+        : { width: "500px", height: "500px" },
     visible: {
       width: "100%",
       height: "100%",
@@ -34,7 +40,7 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
     <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:p-16 relative">
       {/* <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:pt-16 md:pb-28 relative"> */}
       <motion.div
-        className="w-[500px] h-[500px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-0"
+        className="w-[300px] h-[300px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-0 lg:w-[500px] lg:h-[500px]"
         initial={{ opacity: 1 }}
         animate={{ opacity: 0.04 }}
         transition={{ duration: 0.9, delay: 1.8 }}
