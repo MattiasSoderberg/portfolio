@@ -2,137 +2,162 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { H1, H2, TextLarge } from "./library/Typography";
-import Corner, { POSITIONS } from "./library/Corner";
-import ContentContainer from "./library/Containers/ContentContainer";
-import Avatar from "./library/SVG/Avatar";
 import Divider from "./library/Divider";
 import ProjectList from "./library/Projects/ProjectList";
-import { SanityDocument } from "next-sanity";
-import { useProjectContext } from "@/context/ProjectContext";
 import LandingFooter from "./library/LandingFooter";
+import { SanityValues } from "../../sanity.config";
+import { useModalContext } from "@/context/ModalContext";
 
 interface Props {
-  projects: SanityDocument[];
-  landingContent: SanityDocument;
+  projects: SanityValues["project"][];
+  landingContent: SanityValues["landingContent"];
 }
 
+type Animation = "parent" | "child" | "text" | "divider" | "noAnimation";
+
 const Landing = ({ projects, landingContent }: Props) => {
-  const { handleSetProjectList } = useProjectContext();
+  const { isPageLoaded, handleSetPageLoaded } = useModalContext();
 
-  const parentVariants = {
-    initial: { width: "500px", height: "500px" },
-    visible: {
-      width: "100%",
-      height: "100%",
-      transition: {
-        delay: 2,
-        duration: 0.8,
-        staggerChildren: 0.6,
-        ease: "easeInOut",
-      },
-    },
+  const getAnimation = (type: Animation) => {
+    const parentVariants = {
+      initial: { opacity: 0 },
+      visible: { opacity: 1 },
+    };
+    const childVariants = {
+      initial: { opacity: 0 },
+      visible: { opacity: 1 },
+    };
+    const textVariants = {
+      initial: { opacity: 0, y: 40 },
+      visible: { opacity: 1, y: 0 },
+    };
+    const dividerVariants = {
+      initial: { height: "0" },
+      visible: { height: "100%" },
+    };
+    const noAnimation = {
+      initial: { opacity: 1 },
+      visible: { opacity: 1 },
+    };
+    switch (type) {
+      case "parent":
+        if (!isPageLoaded) {
+          return parentVariants;
+        } else {
+          return childVariants;
+        }
+      case "child":
+        return childVariants;
+      case "text":
+        if (!isPageLoaded) {
+          return textVariants;
+        } else {
+          return childVariants;
+        }
+      case "divider":
+        if (!isPageLoaded) {
+          return dividerVariants;
+        } else {
+          dividerVariants.initial.height = "100%";
+          return dividerVariants;
+        }
+      case "noAnimation":
+        return noAnimation;
+    }
   };
 
-  const childVariants = {
-    initial: { opacity: 0 },
-    visible: { opacity: 1 },
+  const getTransition = (type: Animation) => {
+    const transition = { duration: 0.3 };
+    switch (type) {
+      case "parent":
+        if (!isPageLoaded) {
+          return { duration: 0.3, staggerChildren: 0.4 };
+        } else {
+          return transition;
+        }
+      case "child":
+        return transition;
+      case "text":
+        if (!isPageLoaded) {
+          return transition;
+        } else {
+          return transition;
+        }
+    }
   };
 
-  const avatarVariant = {
-    initial: { opacity: 1 },
-    visible: { opacity: 0.05 },
-  };
-
-  const textVariants = {
-    initial: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0 },
-  };
+  // useEffect(() => {
+  //   (async () => {
+  //     const { projects, landingContent } = await getData();
+  //     console.log("hej");
+  //     if (projects.length < 0 && landingContent) {
+  //       setProjects(projects);
+  //       setLandingContent(landingContent);
+  //       // if (isInitialLoad) {
+  //       // }
+  //     }
+  //   })();
+  // }, []);
 
   useEffect(() => {
-    handleSetProjectList(projects);
+    return () => {
+      handleSetPageLoaded();
+    };
   }, []);
 
   return (
-    <ContentContainer>
+    <>
       <motion.div
-        className="w-[500px] h-[500px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 -mt-7 z-0"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0.04 }}
-        transition={{ duration: 0.9, delay: 1.8 }}
+        className="w-fit h-full flex flex-col justify-between pr-0 lg:pr-8 2xl:pr-16"
+        variants={getAnimation("parent")}
+        transition={getTransition("parent")}
       >
-        <Avatar color="thirdMain" />
-      </motion.div>
-      <motion.div
-        className="w-full h-full relative"
-        variants={parentVariants}
-        initial="initial"
-        animate="visible"
-      >
-        <Corner position={POSITIONS.topLeft} />
-        <Corner position={POSITIONS.topRight} />
-        <motion.div
-          className="w-full h-full flex justify-between gap-4 p-7 z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 3xl:p-28"
-          variants={childVariants}
-          transition={{ duration: 0.7, staggerChildren: 0.7 }}
-        >
+        {/* <div className="w-full h-fit flex flex-col gap-5 lg:gap-8 2xl:gap-10"> */}
+        <div className="flex flex-col gap-6 lg:gap-8 xl:gap-10">
           <motion.div
-            className="w-fit h-full flex flex-col justify-between p-0 lg:pr-8 2xl:pr-16"
-            variants={childVariants}
-            transition={{ duration: 0.3, staggerChildren: 0.4 }}
+            variants={getAnimation("text")}
+            transition={{ duration: 0.4 }}
           >
-            <div className="flex flex-col gap-6 sm:gap-10">
-              <motion.div
-                variants={childVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <H1>{landingContent?.heading}</H1>
-              </motion.div>
-              <motion.div
-                variants={textVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <H2 color="firstLighter">{landingContent?.subheading}</H2>
-              </motion.div>
-              <motion.div
-                variants={textVariants}
-                transition={{ duration: 0.4 }}
-              >
-                <TextLarge color="lightMain">{landingContent?.text}</TextLarge>
-              </motion.div>
-            </div>
-            <motion.div
-              // className="sm:mt-auto"
-              variants={textVariants}
-              transition={{ duration: 0.4 }}
-            >
-              <LandingFooter document={landingContent} />
-            </motion.div>
+            <H1>{landingContent?.heading}</H1>
           </motion.div>
-
-          <div className="hidden gap-8 xl:gap-16 md:flex">
-            <motion.div
-              variants={{
-                initial: { height: 0 },
-                visible: { height: "100%" },
-              }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-            >
-              <Divider />
-            </motion.div>
-            <motion.div
-              className="flex flex-col gap-8"
-              variants={childVariants}
-              transition={{ duration: 0.4 }}
-            >
-              <H2>Projects</H2>
-              <ProjectList />
-            </motion.div>
-          </div>
+          <motion.div
+            variants={getAnimation("text")}
+            transition={{ duration: 0.4 }}
+          >
+            <H2 color="firstLighter">{landingContent?.subheading}</H2>
+          </motion.div>
+          <motion.div
+            variants={getAnimation("text")}
+            transition={{ duration: 0.4 }}
+          >
+            <TextLarge color="lightMain">{landingContent?.text}</TextLarge>
+          </motion.div>
+        </div>
+        <motion.div
+          variants={getAnimation("child")}
+          transition={{ duration: 0.4 }}
+        >
+          <LandingFooter document={landingContent} />
         </motion.div>
-        <Corner position={POSITIONS.bottomLeft} />
-        <Corner position={POSITIONS.bottomRight} />
       </motion.div>
-    </ContentContainer>
+
+      <div className="hidden gap-8 xl:gap-16 md:flex">
+        <motion.div
+          variants={getAnimation("divider")}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          <Divider />
+        </motion.div>
+        <motion.div
+          variants={
+            !isPageLoaded ? getAnimation("child") : getAnimation("noAnimation")
+          }
+          transition={{ duration: 0.4 }}
+        >
+          <ProjectList projects={projects} />
+        </motion.div>
+      </div>
+    </>
   );
 };
 
