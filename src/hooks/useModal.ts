@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useModalContext } from "@/context/ModalContext";
 
-type ContentType = "contact" | "projects" | "none";
+type ContentType = "contact" | "menu" | "none";
 
 const useModal = () => {
   const modalContext = useModalContext();
