@@ -59,7 +59,7 @@ const Modal = ({ modalType }: Props) => {
         transition={{ duration: 0.2, ease: "easeInOut" }}
         key="modal"
       >
-        <div className="absolute top-5 right-5">
+        <div className="absolute top-6 right-6">
           <ButtonNaked
             onClick={closeModal}
             borders="border border-1 border-lightMain"
