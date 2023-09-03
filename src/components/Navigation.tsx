@@ -12,6 +12,7 @@ import Link from "./library/Link";
 import ButtonNaked from "./library/Button/variants/ButtonNaked";
 import SVGGradientWrapper from "./library/SVG/SVGGradientWrapper";
 import useModal from "@/hooks/useModal";
+import NextLink from "./library/NextLink";
 
 const Navigation = () => {
   const { openModal } = useModal();
@@ -21,7 +22,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center xl:h-[100px]">
+    <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center 3xl:h-[100px] z-10">
       <div className="w-full h-full max-w-screen-3xl flex justify-between items-center px-2 md:px-10 lg:px-20 2xl:px-40">
         <motion.div
           className="h-full py-5 hidden md:block"
@@ -29,7 +30,9 @@ const Navigation = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.1, duration: 0.7 }}
         >
-          <Avatar color="firstLighter" />
+          <NextLink href="/">
+            <Avatar color="firstLighter" />
+          </NextLink>
         </motion.div>
         <div className="block md:hidden">
           <ButtonNaked fonts="text-firstLighter text-3xl">
