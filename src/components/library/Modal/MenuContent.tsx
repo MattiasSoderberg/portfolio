@@ -10,7 +10,6 @@ const MenuContent = () => {
     (async () => {
       const data = await getData();
       if (data.projects.length > 0) {
-        console.log("MENU CONTENT", data);
         setProjects(data.projects);
       }
     })();
