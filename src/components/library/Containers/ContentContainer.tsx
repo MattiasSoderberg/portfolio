@@ -6,22 +6,16 @@ import { POSITIONS } from "../Corner";
 import Avatar from "../SVG/Avatar";
 import Corner from "../Corner";
 import { useParams } from "next/navigation";
-import useWindowSize from "@/hooks/useWindowSize";
 
 const ContentContainer = ({ children }: { children: React.ReactNode }) => {
   const params = useParams();
   const { slug } = params;
 
-  const { width } = useWindowSize();
-
   const parentVariants = {
-    initial:
-      width < 1024
-        ? { width: "300px", height: "300px" }
-        : { width: "500px", height: "500px" },
+    initial: { width: "var(--width-from)", height: "var(--height-from)" },
     visible: {
-      width: "100%",
-      height: "100%",
+      width: "var(--size-to)",
+      height: "var(--size-to)",
       transition: {
         delay: 2,
         duration: 0.8,
@@ -38,7 +32,6 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:p-16 relative">
-      {/* <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:pt-16 md:pb-28 relative"> */}
       <motion.div
         className="w-[300px] h-[300px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-0 lg:w-[500px] lg:h-[500px]"
         initial={{ opacity: 1 }}
@@ -48,7 +41,8 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
         <Avatar color="thirdMain" />
       </motion.div>
       <motion.div
-        className="w-full h-full max-w-full relative"
+        layout
+        className="[--width-from:300px] [--height-from:300px] [--size-to:100%] max-w-full relative lg:[--width-from:500px] lg:[--height-from:500px]"
         variants={parentVariants}
         initial="initial"
         animate="visible"
