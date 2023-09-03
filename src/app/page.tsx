@@ -1,23 +1,8 @@
-import Navigation from "@/components/Navigation";
 import Landing from "../components/Landing";
-import ContextProvider from "@/context";
-import { client } from "../../sanity/lib/client";
-
-async function getData() {
-  const projects = await client.fetch(`*[_type == "project"]`);
-  const landingContent = await client.fetch(`*[_type == "landingContent"]`);
-
-  return { projects, landingContent };
-}
+import getData from "@/utils/getData";
 
 export default async function Home() {
   const { projects, landingContent } = await getData();
 
-  return (
-    <div className="w-full h-full relative">
-      <main className="w-full h-full bg-darkMain">
-        <Landing projects={projects} landingContent={landingContent[0]} />
-      </main>
-    </div>
-  );
+  return <Landing projects={projects} landingContent={landingContent} />;
 }
