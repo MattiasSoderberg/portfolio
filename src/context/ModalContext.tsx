@@ -1,3 +1,4 @@
+"use client";
 import React, { createContext, useContext, useState } from "react";
 import Modal from "@/components/library/Modal/Modal";
 import { AnimatePresence } from "framer-motion";
@@ -6,12 +7,14 @@ interface Props {
   children: React.ReactNode;
 }
 
-type ContentType = "contact" | "projects" | "none";
+type ModalTypes = "contact" | "projects" | "none";
 
 interface ModalContextType {
-  handleOnOpen: (content: ContentType) => void;
+  handleOnOpen: (content: ModalTypes) => void;
   handleOnClose: () => void;
   isModalOpen: boolean;
+  isPageLoaded: boolean;
+  handleSetPageLoaded: () => void;
 }
 
 export const ModalContext = createContext<ModalContextType | null>(null);
@@ -30,28 +33,35 @@ export const useModalContext = () => {
 
 export const ModalProvider = ({ children }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState<ContentType>("none");
+  const [modalType, setModalType] = useState<ModalTypes>("none");
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
 
-  const handleOnOpen = (content: ContentType): void => {
+  const handleOnOpen = (content: ModalTypes): void => {
     setIsModalOpen(true);
-    setModalContent(content);
+    setModalType(content);
   };
 
   const handleOnClose = (): void => {
     setIsModalOpen(false);
-    setModalContent("none");
+    setModalType("none");
+  };
+
+  const handleSetPageLoaded = (): void => {
+    setIsPageLoaded(true);
   };
 
   const value = {
     handleOnOpen,
     handleOnClose,
     isModalOpen,
+    isPageLoaded,
+    handleSetPageLoaded,
   };
 
   return (
     <ModalContext.Provider value={value}>
       <AnimatePresence>
-        {isModalOpen && <Modal content={modalContent} />}
+        {isModalOpen && <Modal modalType={modalType} />}
       </AnimatePresence>
       {children}
     </ModalContext.Provider>
