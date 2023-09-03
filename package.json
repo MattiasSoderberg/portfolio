@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@portabletext/react": "^3.0.4",
+    "@sanity-typed/types": "^4.1.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.14.1",
     "@sendgrid/mail": "^7.7.0",
