@@ -98,6 +98,10 @@
     box-shadow: 0px 0px 8px 2px var(--tw-shadow-color), 1px 1px 10px -2px #D9D9DC;
   }
 
+  .drawer-shadow {
+    box-shadow: 3px 0px 8px 2px var(--tw-shadow-color), 4px 0px 10px -2px #D9D9DC;
+  }
+
   .input-focus:focus {
     box-shadow: 0px 0px 1px 2px var(--tw-shadow-color), 0px 0px 12px 2px var(--tw-shadow-color);
     outline: none;
