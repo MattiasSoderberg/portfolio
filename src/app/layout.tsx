@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import "./globals.css";
 import { Quicksand } from "next/font/google";
 import Navigation from "@/components/Navigation";
-// import ContextProvider from "@/context";
 import ContentContainer from "@/components/library/Containers/ContentContainer";
 import { ModalProvider } from "@/context/ModalContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const quicksand = Quicksand({ subsets: ["latin"] });
 
@@ -27,6 +27,7 @@ export default function RootLayout({
             <ContentContainer>{children}</ContentContainer>
           </main>
         </ModalProvider>
+        <Analytics />
       </body>
     </html>
   );
