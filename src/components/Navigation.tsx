@@ -63,8 +63,8 @@ const Navigation = () => {
               iconId="menu"
               IconElement={IoMenu}
               attribute="stroke"
-              fromColor="secondMain"
-              toColor="secondLighter"
+              fromColor="firstLighter"
+              toColor="firstMain"
             />
           </ButtonNaked>
         </motion.div>
@@ -74,11 +74,11 @@ const Navigation = () => {
           initial="initial"
           animate="visible"
         >
-          <div className="w-fit h-[28px] md:hidden">
+          {/* <div className="w-fit h-[28px] md:hidden">
             <NextLink href="/">
               <Avatar color="firstLighter" />
             </NextLink>
-          </div>
+          </div> */}
           <ButtonNaked
             fonts="text-3xl xl:text-4xl"
             ariaLabel="Open contact form"
