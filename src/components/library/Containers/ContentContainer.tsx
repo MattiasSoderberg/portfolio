@@ -31,11 +31,6 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
     },
   };
 
-  const childVariants = {
-    initial: { opacity: 0 },
-    visible: { opacity: 1 },
-  };
-
   useEffect(() => {
     if (path !== "/") {
       handleSetPageLoaded();
