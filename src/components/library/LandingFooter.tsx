@@ -26,7 +26,10 @@ const LandingFooter = ({ document }: Props) => {
           src={getImageUrl(landingFooter?.image)}
           alt={landingFooter?.image.alt || "No alt text"}
           fill
-          sizes="(max-width: 200px) 200px"
+          sizes="(max-width: 200px) 150px, 200px"
+          style={{
+            objectFit: "contain",
+          }}
         />
       </div>
       <div className="w-full h-full flex flex-col items-center justify-end gap-5 sm:items-end xl:gap-10">
