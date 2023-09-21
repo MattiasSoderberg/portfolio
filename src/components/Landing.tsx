@@ -86,19 +86,6 @@ const Landing = ({ projects, landingContent }: Props) => {
     }
   };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const { projects, landingContent } = await getData();
-  //     console.log("hej");
-  //     if (projects.length < 0 && landingContent) {
-  //       setProjects(projects);
-  //       setLandingContent(landingContent);
-  //       // if (isInitialLoad) {
-  //       // }
-  //     }
-  //   })();
-  // }, []);
-
   useEffect(() => {
     return () => {
       handleSetPageLoaded();
@@ -108,11 +95,10 @@ const Landing = ({ projects, landingContent }: Props) => {
   return (
     <>
       <motion.div
-        className="w-fit h-full flex flex-col justify-between pr-0 lg:pr-8 2xl:pr-16"
+        className="w-fit h-full min-h-max flex flex-col justify-between pr-0 overflow-y-auto lg:pr-8 2xl:pr-16"
         variants={getAnimation("parent")}
         transition={getTransition("parent")}
       >
-        {/* <div className="w-full h-fit flex flex-col gap-5 lg:gap-8 2xl:gap-10"> */}
         <div className="flex flex-col gap-6 lg:gap-8 xl:gap-10">
           <motion.div
             variants={getAnimation("text")}
