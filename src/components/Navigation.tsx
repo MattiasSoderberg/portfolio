@@ -13,8 +13,10 @@ import ButtonNaked from "./library/Button/variants/ButtonNaked";
 import SVGGradientWrapper from "./library/SVG/SVGGradientWrapper";
 import useModal from "@/hooks/useModal";
 import NextLink from "./library/NextLink";
+import { usePathname } from "next/navigation";
 
 const Navigation = () => {
+  const path = usePathname();
   const { openModal } = useModal();
 
   const handleOnMailClick = () => {
@@ -25,14 +27,22 @@ const Navigation = () => {
     openModal("menu");
   };
 
+  const variants = {
+    initial: path === "/" ? { opacity: 0 } : { opacity: 1 },
+    visible: {
+      opacity: 1,
+      transition: { delay: 1.8, duration: 0.7, ease: "easeInOut" },
+    },
+  };
+
   return (
     <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center 3xl:h-[100px] z-10">
       <div className="w-full h-full max-w-screen-3xl flex justify-between items-center px-2 md:px-10 lg:px-20 2xl:px-40">
         <motion.div
           className="h-full py-4 hidden md:block"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.1, duration: 0.7 }}
+          variants={variants}
+          initial="initial"
+          animate="visible"
         >
           <NextLink href="/" ariaLabel="Back to home">
             <Avatar color="firstLighter" />
@@ -40,9 +50,9 @@ const Navigation = () => {
         </motion.div>
         <motion.div
           className="block md:hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.1, duration: 0.7 }}
+          variants={variants}
+          initial="initial"
+          animate="visible"
         >
           <ButtonNaked
             fonts="text-firstLighter text-3xl"
@@ -60,9 +70,9 @@ const Navigation = () => {
         </motion.div>
         <motion.div
           className="w-full max-w-[200px] flex justify-between items-center text-3xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.8, duration: 0.3 }}
+          variants={variants}
+          initial="initial"
+          animate="visible"
         >
           <div className="w-fit h-[28px] md:hidden">
             <NextLink href="/">

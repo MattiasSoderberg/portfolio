@@ -95,7 +95,7 @@ const Landing = ({ projects, landingContent }: Props) => {
   return (
     <>
       <motion.div
-        className="w-fit h-full min-h-max flex flex-col justify-between pr-0 overflow-y-auto lg:pr-8 2xl:pr-16"
+        className="w-fit h-full flex flex-col justify-between pr-0 overflow-y-auto lg:pr-8 2xl:pr-16"
         variants={getAnimation("parent")}
         transition={getTransition("parent")}
       >
@@ -138,7 +138,7 @@ const Landing = ({ projects, landingContent }: Props) => {
           variants={
             !isPageLoaded ? getAnimation("child") : getAnimation("noAnimation")
           }
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.4, staggerChildren: 0.3 }}
         >
           <ProjectList projects={projects} />
         </motion.div>
