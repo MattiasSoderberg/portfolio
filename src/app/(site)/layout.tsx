@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { Quicksand } from "next/font/google";
 import Navigation from "@/components/Navigation";
 import ContentContainer from "@/components/library/Containers/ContentContainer";

@@ -1,4 +1,4 @@
-import Landing from "../components/Landing";
+import Landing from "@/components/Landing";
 import getData from "@/utils/getData";
 
 export default async function Home() {
