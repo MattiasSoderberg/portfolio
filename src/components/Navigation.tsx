@@ -34,7 +34,7 @@ const Navigation = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.1, duration: 0.7 }}
         >
-          <NextLink href="/">
+          <NextLink href="/" ariaLabel="Back to home">
             <Avatar color="firstLighter" />
           </NextLink>
         </motion.div>
@@ -46,6 +46,7 @@ const Navigation = () => {
         >
           <ButtonNaked
             fonts="text-firstLighter text-3xl"
+            ariaLabel="Open project menu"
             onClick={handleOnMenuClick}
           >
             <SVGGradientWrapper
@@ -68,14 +69,22 @@ const Navigation = () => {
               <Avatar color="firstLighter" />
             </NextLink>
           </div>
-          <ButtonNaked fonts="text-3xl xl:text-4xl" onClick={handleOnMailClick}>
+          <ButtonNaked
+            fonts="text-3xl xl:text-4xl"
+            ariaLabel="Open contact form"
+            onClick={handleOnMailClick}
+          >
             <SVGGradientWrapper
               iconId="nav-mail"
               IconElement={IoMailOutline}
               attribute="stroke"
             />
           </ButtonNaked>
-          <Link href="https://github.com/MattiasSoderberg" target>
+          <Link
+            href="https://github.com/MattiasSoderberg"
+            target
+            ariaLabel="Check out my GitHub"
+          >
             <SVGGradientWrapper
               iconId="nav-github"
               IconElement={IoLogoGithub}
@@ -85,6 +94,7 @@ const Navigation = () => {
           <Link
             href="https://www.linkedin.com/in/mattias-s%C3%B6derberg-b0b509103/"
             target
+            ariaLabel="Check out my Linkedin profile"
           >
             <SVGGradientWrapper
               IconElement={IoLogoLinkedin}

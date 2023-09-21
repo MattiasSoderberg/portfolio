@@ -18,6 +18,8 @@ export interface ButtonProps {
   transition?: string;
   hovers?: string;
   disabled?: boolean;
+  ariaLabel?: string;
+  role?: string;
   onClick?: () => void;
 }
 
@@ -33,6 +35,8 @@ const Button = ({
   transition = "transition-all duration-150 ease-in",
   hovers,
   disabled = false,
+  ariaLabel = "",
+  role = "button",
   onClick,
 }: ButtonProps) => {
   const bgColor = background.split("-")[1].split(/(?=[A-Z])/)[0];
@@ -40,8 +44,10 @@ const Button = ({
   const baseClasses = `${fonts} ${paddings} ${borders} ${borderRadius}`;
   const activeClasses = `text-${color} ${background} ${hoverClasses} ${transition} ${baseClasses}`;
   const disabledClasses = `${baseClasses} bg-darkLight text-darkLighter`;
+
   return (
     <button
+      aria-label={ariaLabel}
       type={type}
       disabled={disabled}
       onClick={onClick}

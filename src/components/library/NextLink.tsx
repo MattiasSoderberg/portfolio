@@ -9,6 +9,7 @@ interface Props {
   hovers?: string;
   transition?: string;
   shallow?: boolean;
+  ariaLabel?: string;
 }
 
 const NextLink = ({
@@ -17,15 +18,16 @@ const NextLink = ({
   as = "",
   color = "lightMain",
   hovers = "hover:text-lightDarker hover:underline",
-  transition = "transition-all duration-150 ease-in",
+  transition = "transition-all duration-100 ease-out",
   shallow = true,
+  ariaLabel = "",
 }: Props) => {
   return (
     <Link
       as={as ? as : href}
       href={href}
       className={`text-${color} text-base 2xl:text-lg ${hovers} ${transition}`}
-      shallow={shallow}
+      aria-label={ariaLabel}
     >
       {children}
     </Link>
