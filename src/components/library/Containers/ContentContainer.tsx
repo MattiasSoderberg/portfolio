@@ -32,9 +32,7 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    if (path !== "/") {
-      handleSetPageLoaded();
-    }
+    handleSetPageLoaded();
   }, []);
 
   return (
