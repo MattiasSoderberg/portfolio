@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { H1, H2, TextLarge } from "./library/Typography";
 import Divider from "./library/Divider";
@@ -89,25 +89,25 @@ const Landing = ({ projects, landingContent }: Props) => {
   return (
     <>
       <motion.div
-        className="w-fit h-full min-h-[700px] flex flex-col justify-between pr-0 overflow-y-auto lg:pr-8 2xl:pr-16"
+        className="w-fit h-full min-h-fit flex flex-col gap-8 justify-between pr-0 overflow-y-scroll sm:min-h-0 lg:pr-8 2xl:pr-16"
         variants={getAnimation("parent")}
         transition={getTransition("parent")}
       >
         <div className="flex flex-col gap-6 lg:gap-8 xl:gap-10">
           <motion.div
-            variants={getAnimation("text")}
+            variants={getAnimation("child")}
             transition={{ duration: 0.4 }}
           >
             <H1>{landingContent?.heading}</H1>
           </motion.div>
           <motion.div
-            variants={getAnimation("text")}
+            variants={getAnimation("child")}
             transition={{ duration: 0.4 }}
           >
             <H2 color="firstLighter">{landingContent?.subheading}</H2>
           </motion.div>
           <motion.div
-            variants={getAnimation("text")}
+            variants={getAnimation("child")}
             transition={{ duration: 0.4 }}
           >
             <TextLarge color="lightMain">{landingContent?.text}</TextLarge>
