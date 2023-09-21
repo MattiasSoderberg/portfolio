@@ -86,16 +86,10 @@ const Landing = ({ projects, landingContent }: Props) => {
     }
   };
 
-  useEffect(() => {
-    return () => {
-      handleSetPageLoaded();
-    };
-  }, []);
-
   return (
     <>
       <motion.div
-        className="w-fit h-full flex flex-col justify-between pr-0 overflow-y-auto lg:pr-8 2xl:pr-16"
+        className="w-fit h-full min-h-[700px] flex flex-col justify-between pr-0 overflow-y-auto lg:pr-8 2xl:pr-16"
         variants={getAnimation("parent")}
         transition={getTransition("parent")}
       >
