@@ -52,7 +52,7 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
         initial="initial"
         animate={path === "/" && "visible"}
       >
-        <div className="w-full h-full flex justify-between gap-4 p-7 z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 3xl:p-28">
+        <div className="w-full h-full flex justify-between gap-4 py-8 px-5 z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 3xl:p-28">
           {children}
         </div>
         <Corner
