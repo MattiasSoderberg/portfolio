@@ -36,7 +36,7 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:p-16 relative">
+    <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:p-16 relative overflow-hidden">
       <motion.div
         className="w-[300px] h-[300px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-0 lg:w-[500px] lg:h-[500px]"
         initial={path === "/" ? { opacity: 1 } : { opacity: 0.04 }}
