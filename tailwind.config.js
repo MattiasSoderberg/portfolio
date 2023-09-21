@@ -28,8 +28,12 @@ module.exports = {
         bgDarkMain: "#171A1FFD",
         bgModalOverlay: "#171A1FED",
       },
+      width: {
+        screenDynamic: "100dvw",
+      },
       height: {
         navHeight: "70px",
+        screenDynamic: "100dvh",
       },
       maxWidth: {
         "screen-3xl": "2000px", // max width for content container
