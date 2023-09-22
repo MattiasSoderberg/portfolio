@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={quicksand.className}>
-      <body className="w-screen h-screenDynamic flex flex-col items-start overflow-hidden relative">
+      <body className="w-screen h-screenSmall flex flex-col items-start relative overflow-hidden">
         <ModalProvider>
           <Navigation />
           <main className="w-full h-full flex flex-col items-center bg-darkMain overflow-hidden">
