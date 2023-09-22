@@ -89,7 +89,7 @@ const Landing = ({ projects, landingContent }: Props) => {
   return (
     <>
       <motion.div
-        className="w-fit h-full min-h-fit flex flex-col gap-8 justify-between pr-0 overflow-y-scroll sm:min-h-0 lg:pr-8 2xl:pr-16"
+        className="w-fit h-full min-h-fit flex flex-col gap-8 justify-between pr-0 overflow-y-auto custom-scrollbar sm:min-h-0 lg:pr-8 2xl:pr-16"
         variants={getAnimation("parent")}
         transition={getTransition("parent")}
       >
