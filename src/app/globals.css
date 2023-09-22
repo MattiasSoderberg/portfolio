@@ -56,5 +56,26 @@
 }
 
 @layer components {
-  
+  .scrollbar-track::-webkit-scrollbar {
+    width: 4px;
+    background-color: #171A1FFD;
+    /* -webkit-box-shadow: inset 0 0 1px #ACACB0; */
+    /* border-radius: 0 20px 20px 0; */
+    overflow: hidden;
+  }
+
+  .scrollbar-thumb::-webkit-scrollbar-thumb {
+    background-color: #1B1E22;
+    -webkit-box-shadow: inset 0 0 1px #363738;
+    border-radius: 0 20px 20px 0;
+  }
+
+  .scrollbar-button::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  .custom-scrollbar {
+    scrollbar-gutter: stable;
+    @apply scrollbar-track scrollbar-thumb scrollbar-button
+  }
 }
