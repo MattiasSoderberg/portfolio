@@ -36,7 +36,7 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:p-16 relative overflow-hidden">
+    <section className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex flex-col justify-center items-center p-1 md:px-10 lg:px-20 2xl:px-40 md:p-16 relative">
       <motion.div
         className="w-[300px] h-[300px] p-10 absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-0 lg:w-[500px] lg:h-[500px]"
         initial={path === "/" ? { opacity: 1 } : { opacity: 0.04 }}
@@ -46,13 +46,12 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
         <Avatar color="thirdMain" />
       </motion.div>
       <motion.div
-        layout
-        className="[--width-from:300px] [--height-from:300px] [--size-to:100%] max-w-full relative lg:[--width-from:500px] lg:[--height-from:500px]"
+        className="[--width-from:300px] [--height-from:300px] [--size-to:100%] relative lg:[--width-from:500px] lg:[--height-from:500px]"
         variants={parentVariants}
         initial="initial"
         animate={path === "/" && "visible"}
       >
-        <div className="w-full h-full flex justify-between gap-4 py-8 px-5 z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 3xl:p-28">
+        <div className="w-full h-full flex justify-between gap-4 py-8 px-5 overflow-hidden md:gap-8 2xl:gap-16 sm:p-12 lg:p-20 3xl:p-28">
           {children}
         </div>
         <Corner
