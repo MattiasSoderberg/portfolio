@@ -11,6 +11,7 @@ const quicksand = Quicksand({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Mattias Söderberg | Full Stack Developer",
   description: "Mattias Söderberg's Portfolio",
+  icons: { icon: "/icon.svg" },
 };
 
 export default function RootLayout({

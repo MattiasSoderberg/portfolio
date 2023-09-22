@@ -28,7 +28,7 @@ const ProjectList = ({ projects, rightPadding = false }: Props) => {
       <motion.ul
         variants={variants}
         transition={{ staggerChildren: 0.2, duration: 0.2, ease: "easeOut" }}
-        className="min-w-max h-full flex flex-col gap-4 overflow-y-scroll z-10"
+        className="min-w-max h-full flex flex-col gap-4 overflow-y-auto z-10"
       >
         {projects.length > 0 &&
           projects.map((project) => (
