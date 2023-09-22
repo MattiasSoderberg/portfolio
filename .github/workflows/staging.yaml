@@ -20,7 +20,7 @@ jobs:
         run: npm install --global vercel@latest
       - name: Pull Vercel Enviroment Variables
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Build Project
+      - name: Build Staging Project
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-      - name: Deploy Project build
+      - name: Deploy Staging Project build
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
