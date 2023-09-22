@@ -28,7 +28,7 @@ const LandingFooter = ({ document }: Props) => {
           fill
           sizes="(max-width: 200px) 150px, 200px"
           style={{
-            objectFit: "contain",
+            objectFit: "fill",
           }}
         />
       </div>

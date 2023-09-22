@@ -23,7 +23,7 @@ const Article = ({
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0 }}
-          className="w-full h-full max-w-[100%] flex flex-col gap-8 px-10 overflow-y-scroll"
+          className="w-full h-full max-w-[100%] flex flex-col gap-8 overflow-y-auto custom-scrollbar"
         >
           <H1>{currentProject?.title}</H1>
           {currentProject?.mainImage && (
