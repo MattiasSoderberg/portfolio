@@ -11,7 +11,11 @@ jobs:
   Deploy-Staging:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Enviroment Variables
