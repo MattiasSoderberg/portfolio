@@ -10,17 +10,6 @@ type Props = {
 };
 
 const MenuContent = ({ projects }: Props) => {
-  // const [projects, setProjects] = useState<SanityValues["project"][]>([]);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const data = await getData();
-  //     if (data.projects.length > 0) {
-  //       setProjects(data.projects);
-  //     }
-  //   })();
-  // }, []);
-
   return (
     <div className="w-fit h-full flex flex-col gap-8">
       <ProjectList projects={projects} />

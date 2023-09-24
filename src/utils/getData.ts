@@ -7,19 +7,23 @@ type DataObject = {
 };
 
 const getData = async () => {
-  const projects: SanityValues["project"][] = await client.fetch(
-    `*[_type == "project"]`
-  );
-  const landingContent: SanityValues["landingContent"][] = await client.fetch(
-    `*[_type == "landingContent"]`
-  );
+  try {
+    const projects: SanityValues["project"][] = await client.fetch(
+      `*[_type == "project"]`
+    );
+    const landingContent: SanityValues["landingContent"][] = await client.fetch(
+      `*[_type == "landingContent"]`
+    );
 
-  const returnObject: DataObject = {
-    projects,
-    landingContent: landingContent[0],
-  };
+    const returnObject: DataObject = {
+      projects,
+      landingContent: landingContent[0],
+    };
 
-  return returnObject;
+    return returnObject;
+  } catch (error) {
+    console.error("Error fetching content", error);
+  }
 };
 
 export default getData;
