@@ -5,7 +5,6 @@ import Navigation from "@/components/Navigation";
 import ContentContainer from "@/components/library/Containers/ContentContainer";
 import { ModalProvider } from "@/context/ModalContext";
 import { Analytics } from "@vercel/analytics/react";
-import getData from "@/utils/getData";
 
 const quicksand = Quicksand({ subsets: ["latin"] });
 
@@ -20,7 +19,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { projects } = await getData();
   return (
     <html lang="en" className={quicksand.className}>
       <body className="w-screen h-screenSmall flex flex-col items-start relative overflow-hidden">
