@@ -12,8 +12,8 @@ const MenuContent = () => {
   useEffect(() => {
     (async () => {
       const data = await getData();
-      if (data.projects.length > 0) {
-        setProjects(data.projects);
+      if (data) {
+        setProjects(data?.projects);
       }
     })();
   }, []);
