@@ -25,7 +25,7 @@ export default async function RootLayout({
     <html lang="en" className={quicksand.className}>
       <body className="w-screen h-screenSmall flex flex-col items-start relative overflow-hidden">
         <ModalProvider>
-          <Navigation />
+          <Navigation projects={projects} />
           <main className="w-full h-full flex flex-col items-center bg-darkMain overflow-hidden">
             <ContentContainer>{children}</ContentContainer>
           </main>

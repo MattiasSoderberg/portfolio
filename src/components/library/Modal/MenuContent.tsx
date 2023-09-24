@@ -4,27 +4,15 @@ import getData from "@/utils/getData";
 import { SanityValues } from "../../../../sanity.config";
 import Divider from "../Divider";
 import NextLink from "../NextLink";
-import { TextRegular } from "../Typography";
 
-const MenuContent = () => {
-  const [projects, setProjects] = useState<SanityValues["project"][]>([]);
+type Props = {
+  projects: SanityValues["project"][];
+};
 
-  useEffect(() => {
-    (async () => {
-      const data = await getData();
-      if (data.projects.length > 0) {
-        setProjects(data.projects);
-      }
-    })();
-  }, []);
-
+const MenuContent = ({ projects }: Props) => {
   return (
     <div className="w-fit h-full flex flex-col gap-8">
-      {projects.length > 0 ? (
-        <ProjectList projects={projects} />
-      ) : (
-        <TextRegular>Loading...</TextRegular>
-      )}
+      <ProjectList projects={projects} />
       <div className="flex flex-col gap-4">
         <Divider horizontal wide={false} color="projects" />
         <NextLink href="/" ariaLabel="Back to home">

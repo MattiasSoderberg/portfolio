@@ -88,7 +88,8 @@ const ContactContent = () => {
   };
 
   return (
-    <div className="w-full h-full max-h-screenDynamic sm:max-w-[680px] flex flex-col gap-8 sm:w-[400px] 2xl:w-[500px]">
+    // <div className="w-full h-full max-h-screenDynamic sm:max-w-[680px] flex flex-col gap-8 sm:w-[400px] 2xl:w-[500px]">
+    <div className="w-full h-full sm:max-w-[680px] flex flex-col gap-8 sm:w-[400px] 2xl:w-[500px]">
       <H2>Contact</H2>
       <form
         ref={form}
