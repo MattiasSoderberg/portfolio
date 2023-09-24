@@ -4,11 +4,7 @@ import getData from "@/utils/getData";
 
 export default async function Page() {
   const { projects } = await getData();
-  return projects.length > 0 ? (
-    <Projects projects={projects} />
-  ) : (
-    <TextRegular>Loading projects...</TextRegular>
-  );
+  return <Projects projects={projects} />;
 }
 
 export async function generateStaticParams() {

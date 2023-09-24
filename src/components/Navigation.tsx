@@ -14,16 +14,24 @@ import SVGGradientWrapper from "./library/SVG/SVGGradientWrapper";
 import useModal from "@/hooks/useModal";
 import NextLink from "./library/NextLink";
 import { usePathname } from "next/navigation";
+import { SanityValues } from "../../sanity.config";
+import { useModalContext } from "@/context/ModalContext";
 
-const Navigation = () => {
+type Props = {
+  projects: SanityValues["project"][];
+};
+
+const Navigation = ({ projects }: Props) => {
   const path = usePathname();
   const { openModal } = useModal();
+  const { handleSetProjects } = useModalContext();
 
   const handleOnMailClick = () => {
     openModal("contact");
   };
 
   const handleOnMenuClick = () => {
+    handleSetProjects(projects);
     openModal("menu");
   };
 

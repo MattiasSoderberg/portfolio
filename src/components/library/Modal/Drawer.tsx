@@ -5,8 +5,15 @@ import useClickOutside from "@/hooks/useClickOutside";
 import ButtonNaked from "../Button/variants/ButtonNaked";
 import { IoCloseOutline } from "react-icons/io5";
 import MenuContent from "./MenuContent";
+import { useModalContext } from "@/context/ModalContext";
+import { SanityValues } from "../../../../sanity.config";
 
-const Drawer = () => {
+type Props = {
+  projects: SanityValues["project"][];
+};
+
+const Drawer = ({ projects }: Props) => {
+  // const {projects} = useModalContext()
   const { closeModal } = useModal();
   const ref = useClickOutside(closeModal);
 
@@ -60,7 +67,7 @@ const Drawer = () => {
             <IoCloseOutline />
           </ButtonNaked>
         </div>
-        <MenuContent />
+        <MenuContent projects={projects} />
       </motion.section>
     </motion.div>
   );
