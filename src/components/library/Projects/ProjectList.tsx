@@ -9,9 +9,10 @@ import { useModalContext } from "@/context/ModalContext";
 interface Props {
   projects: SanityValues["project"][];
   rightPadding?: boolean;
+  onClick?: () => void;
 }
 
-const ProjectList = ({ projects, rightPadding = false }: Props) => {
+const ProjectList = ({ projects, rightPadding = false, onClick }: Props) => {
   const path = usePathname();
   const { isPageLoaded } = useModalContext();
   const variants = {
@@ -35,7 +36,7 @@ const ProjectList = ({ projects, rightPadding = false }: Props) => {
             <motion.li variants={variants} key={project?._id} className="w-max">
               <NextLink
                 href={`/projects/${project?.slug?.current}`}
-                as={`/projects/${project?.slug?.current}`}
+                onClick={onClick}
               >
                 {project?.title}
               </NextLink>

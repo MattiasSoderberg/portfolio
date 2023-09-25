@@ -5,17 +5,20 @@ import { SanityValues } from "../../../../sanity.config";
 import Divider from "../Divider";
 import NextLink from "../NextLink";
 
-type Props = {
-  projects: SanityValues["project"][];
-};
 
-const MenuContent = ({ projects }: Props) => {
+interface Props {
+  projects: SanityValues["project"][];
+  onClick: () => void;
+}
+
+const MenuContent = ({ projects, onClick }: Props) => {
+
   return (
     <div className="w-fit h-full flex flex-col gap-8">
-      <ProjectList projects={projects} />
+      <ProjectList projects={projects} onClick={onClick} />
       <div className="flex flex-col gap-4">
         <Divider horizontal wide={false} color="projects" />
-        <NextLink href="/" ariaLabel="Back to home">
+        <NextLink href="/" ariaLabel="Back to home" onClick={onClick}>
           Home
         </NextLink>
       </div>

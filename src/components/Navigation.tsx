@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Avatar from "./library/SVG/Avatar";
 import {
   IoMailOutline,
@@ -14,14 +14,16 @@ import SVGGradientWrapper from "./library/SVG/SVGGradientWrapper";
 import useModal from "@/hooks/useModal";
 import NextLink from "./library/NextLink";
 import { usePathname } from "next/navigation";
+import Drawer from "./library/Modal/Drawer";
 import { SanityValues } from "../../sanity.config";
-import { useModalContext } from "@/context/ModalContext";
 
-type Props = {
+interface Props {
   projects: SanityValues["project"][];
-};
+}
 
 const Navigation = ({ projects }: Props) => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
   const path = usePathname();
   const { openModal } = useModal();
   const { handleSetProjects } = useModalContext();
@@ -30,9 +32,12 @@ const Navigation = ({ projects }: Props) => {
     openModal("contact");
   };
 
-  const handleOnMenuClick = () => {
-    handleSetProjects(projects);
-    openModal("menu");
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
   };
 
   const variants = {
@@ -65,7 +70,7 @@ const Navigation = ({ projects }: Props) => {
           <ButtonNaked
             fonts="text-firstLighter text-3xl"
             ariaLabel="Open project menu"
-            onClick={handleOnMenuClick}
+            onClick={handleOpenMenu}
           >
             <SVGGradientWrapper
               iconId="menu"
@@ -82,11 +87,6 @@ const Navigation = ({ projects }: Props) => {
           initial="initial"
           animate="visible"
         >
-          {/* <div className="w-fit h-[28px] md:hidden">
-            <NextLink href="/">
-              <Avatar color="firstLighter" />
-            </NextLink>
-          </div> */}
           <ButtonNaked
             fonts="text-3xl xl:text-4xl"
             ariaLabel="Open contact form"
@@ -122,6 +122,15 @@ const Navigation = ({ projects }: Props) => {
           </Link>
         </motion.div>
       </div>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <Drawer
+            handleCloseMenu={handleCloseMenu}
+            projects={projects}
+            key="drawer-menu"
+          />
+        )}
+      </AnimatePresence>
     </nav>
   );
 };

@@ -18,8 +18,8 @@ const Input = ({
   disabled = false,
 }: Props) => {
   const baseClasses = "p-3 rounded-sm placeholder:text-darkLighter";
-  const activeClasses = "p-3 input-focus shadow-thirdMain bg-lightDark";
-  const disabledClasses = "p-3 bg-lightDarker";
+  const activeClasses = "input-focus shadow-thirdMain bg-lightDark";
+  const disabledClasses = "bg-lightDarker";
   return (
     <input
       className={`${baseClasses} ${disabled ? disabledClasses : activeClasses}`}
