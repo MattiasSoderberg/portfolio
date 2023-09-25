@@ -44,7 +44,7 @@ const Modal = ({ modalType }: Props) => {
 
   return (
     <motion.div
-      className="w-screen h-screen bg-bgModalOverlay flex justify-center items-center absolute top-0 left-0 z-20"
+      className="w-screen h-screenDynamic bg-bgModalOverlay flex justify-center items-center absolute top-0 left-0 z-20"
       variants={variants}
       initial="initial"
       animate="visible"
