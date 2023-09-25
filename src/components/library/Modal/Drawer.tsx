@@ -5,17 +5,16 @@ import useClickOutside from "@/hooks/useClickOutside";
 import ButtonNaked from "../Button/variants/ButtonNaked";
 import { IoCloseOutline } from "react-icons/io5";
 import MenuContent from "./MenuContent";
-import { useModalContext } from "@/context/ModalContext";
+
 import { SanityValues } from "../../../../sanity.config";
 
-type Props = {
+interface Props {
   projects: SanityValues["project"][];
-};
+  handleCloseMenu: () => void;
+}
 
-const Drawer = ({ projects }: Props) => {
-  // const {projects} = useModalContext()
-  const { closeModal } = useModal();
-  const ref = useClickOutside(closeModal);
+const Drawer = ({ projects, handleCloseMenu }: Props) => {
+  const ref = useClickOutside(handleCloseMenu);
 
   const overlayVariants = {
     initial: { opacity: 0 },
@@ -59,7 +58,7 @@ const Drawer = ({ projects }: Props) => {
       >
         <div className="absolute top-6 right-6">
           <ButtonNaked
-            onClick={closeModal}
+            onClick={handleCloseMenu}
             borders="border border-1 border-lightMain"
             background="bg-darkLight"
             hovers="hover:bg-darkLighter"
@@ -67,7 +66,9 @@ const Drawer = ({ projects }: Props) => {
             <IoCloseOutline />
           </ButtonNaked>
         </div>
-        <MenuContent projects={projects} />
+
+        <MenuContent projects={projects} onClick={handleCloseMenu} />
+
       </motion.section>
     </motion.div>
   );

@@ -10,6 +10,7 @@ interface Props {
   transition?: string;
   shallow?: boolean;
   ariaLabel?: string;
+  onClick?: () => void;
 }
 
 const NextLink = ({
@@ -21,6 +22,7 @@ const NextLink = ({
   transition = "transition-all duration-100 ease-out",
   shallow = true,
   ariaLabel = "",
+  onClick,
 }: Props) => {
   return (
     <Link
@@ -28,6 +30,7 @@ const NextLink = ({
       href={href}
       className={`text-${color} text-base 2xl:text-lg ${hovers} ${transition}`}
       aria-label={ariaLabel}
+      onClick={onClick}
     >
       {children}
     </Link>

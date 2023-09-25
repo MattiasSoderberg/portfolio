@@ -24,7 +24,7 @@ const baseStyles = {
 export const H1 = ({
   children,
   color = baseStyles.color,
-  size = "text-4xl xl:text-5xl 3xl:text-6xl",
+  size = "text-3xl md:text-4xl xl:text-5xl 3xl:text-6xl",
   fonts = "font-medium",
 }: Props) => {
   const textColor = `text-${color}`;
@@ -36,7 +36,7 @@ export const H1 = ({
 export const H2 = ({
   children,
   color = baseStyles.color,
-  size = "text-lg sm:text-xl xl:text-2xl 3xl:text-3xl",
+  size = "text-base md:text-lg lg:text-xl xl:text-2xl 3xl:text-3xl",
 }: Props) => {
   const textColor = `text-${color}`;
   return <h2 className={`${textColor} ${size}`}>{children}</h2>;
@@ -54,7 +54,7 @@ export const H3 = ({
 export const TextLarge = ({
   children,
   color = baseStyles.color,
-  size = "text-sm sm:text-base xl:text-lg 3xl:text-xl",
+  size = "text-sm md:text-base lg:text-lg 3xl:text-xl",
 }: Props) => {
   const textColor = `text-${color}`;
   return <p className={`${textColor} ${size}`}>{children}</p>;
@@ -63,7 +63,7 @@ export const TextLarge = ({
 export const TextRegular = ({
   children,
   color = baseStyles.color,
-  size = "text-sm xl:text-base 3xl:text-lg",
+  size = "text-xs md:text-sm lg:text-base 3xl:text-lg",
 }: Props) => {
   const textColor = `text-${color}`;
   return <p className={`${textColor} ${size}`}>{children}</p>;
@@ -72,7 +72,7 @@ export const TextRegular = ({
 export const TextSmall = ({
   children,
   color = baseStyles.color,
-  size = "text-xs xl:text-sm",
+  size = "text-[10px] lg:text-xs xl:text-sm",
 }: Props) => {
   const textColor = `text-${color}`;
   return <p className={`${textColor} ${size}`}>{children}</p>;
