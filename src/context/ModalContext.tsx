@@ -15,8 +15,6 @@ interface ModalContextType {
   isModalOpen: boolean;
   isPageLoaded: boolean;
   handleSetPageLoaded: () => void;
-  projects: SanityValues["project"][];
-  handleSetProjects: (projects: SanityValues["project"][]) => void;
 }
 
 export const ModalContext = createContext<ModalContextType | null>(null);
@@ -37,7 +35,6 @@ export const ModalProvider = ({ children }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<ModalTypes>("none");
   const [isPageLoaded, setIsPageLoaded] = useState(false);
-  const [projects, setProjects] = useState<SanityValues["project"][]>([]);
 
   const handleOnOpen = (content: ModalTypes): void => {
     setIsModalOpen(true);
@@ -53,18 +50,12 @@ export const ModalProvider = ({ children }: Props) => {
     setIsPageLoaded(true);
   };
 
-  const handleSetProjects = (): void => {
-    setProjects(projects);
-  };
-
   const value = {
     handleOnOpen,
     handleOnClose,
     isModalOpen,
     isPageLoaded,
     handleSetPageLoaded,
-    projects,
-    handleSetProjects,
   };
 
   return (
