@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Avatar from "./library/SVG/Avatar";
 import {
   IoMailOutline,
@@ -14,8 +14,15 @@ import SVGGradientWrapper from "./library/SVG/SVGGradientWrapper";
 import useModal from "@/hooks/useModal";
 import NextLink from "./library/NextLink";
 import { usePathname } from "next/navigation";
+import Drawer from "./library/Modal/Drawer";
+import { SanityValues } from "../../sanity.config";
 
-const Navigation = () => {
+interface Props {
+  projects: SanityValues["project"][];
+}
+
+const Navigation = ({ projects }: Props) => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const path = usePathname();
   const { openModal } = useModal();
 
@@ -24,7 +31,16 @@ const Navigation = () => {
   };
 
   const handleOnMenuClick = () => {
-    openModal("menu");
+    // openModal("menu");
+    setIsMenuOpen(true);
+  };
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
   };
 
   const variants = {
@@ -74,11 +90,6 @@ const Navigation = () => {
           initial="initial"
           animate="visible"
         >
-          {/* <div className="w-fit h-[28px] md:hidden">
-            <NextLink href="/">
-              <Avatar color="firstLighter" />
-            </NextLink>
-          </div> */}
           <ButtonNaked
             fonts="text-3xl xl:text-4xl"
             ariaLabel="Open contact form"
@@ -114,6 +125,15 @@ const Navigation = () => {
           </Link>
         </motion.div>
       </div>
+      <AnimatePresence>
+        {isMenuOpen && (
+          <Drawer
+            handleCloseMenu={handleCloseMenu}
+            projects={projects}
+            key="drawer-menu"
+          />
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
