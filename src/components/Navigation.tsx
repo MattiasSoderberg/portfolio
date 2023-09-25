@@ -23,8 +23,10 @@ interface Props {
 
 const Navigation = ({ projects }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
   const path = usePathname();
   const { openModal } = useModal();
+  const { handleSetProjects } = useModalContext();
 
   const handleOnMailClick = () => {
     openModal("contact");

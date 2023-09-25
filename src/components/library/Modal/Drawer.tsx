@@ -5,6 +5,7 @@ import useClickOutside from "@/hooks/useClickOutside";
 import ButtonNaked from "../Button/variants/ButtonNaked";
 import { IoCloseOutline } from "react-icons/io5";
 import MenuContent from "./MenuContent";
+
 import { SanityValues } from "../../../../sanity.config";
 
 interface Props {
@@ -65,7 +66,9 @@ const Drawer = ({ projects, handleCloseMenu }: Props) => {
             <IoCloseOutline />
           </ButtonNaked>
         </div>
+
         <MenuContent projects={projects} onClick={handleCloseMenu} />
+
       </motion.section>
     </motion.div>
   );

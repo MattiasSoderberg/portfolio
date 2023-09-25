@@ -5,12 +5,14 @@ import { SanityValues } from "../../../../sanity.config";
 import Divider from "../Divider";
 import NextLink from "../NextLink";
 
+
 interface Props {
   projects: SanityValues["project"][];
   onClick: () => void;
 }
 
 const MenuContent = ({ projects, onClick }: Props) => {
+
   return (
     <div className="w-fit h-full flex flex-col gap-8">
       <ProjectList projects={projects} onClick={onClick} />
