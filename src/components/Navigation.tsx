@@ -30,11 +30,6 @@ const Navigation = ({ projects }: Props) => {
     openModal("contact");
   };
 
-  const handleOnMenuClick = () => {
-    // openModal("menu");
-    setIsMenuOpen(true);
-  };
-
   const handleOpenMenu = () => {
     setIsMenuOpen(true);
   };
@@ -73,7 +68,7 @@ const Navigation = ({ projects }: Props) => {
           <ButtonNaked
             fonts="text-firstLighter text-3xl"
             ariaLabel="Open project menu"
-            onClick={handleOnMenuClick}
+            onClick={handleOpenMenu}
           >
             <SVGGradientWrapper
               iconId="menu"
