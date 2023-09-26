@@ -12,7 +12,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     {
       url: process.env.PRODUCTION_URL as string,
       lastModified: new Date(),
-      priority: 1,
     },
     ...siteProjects,
   ];
