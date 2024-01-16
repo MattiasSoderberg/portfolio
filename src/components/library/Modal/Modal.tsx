@@ -44,7 +44,7 @@ const Modal = ({ modalType }: Props) => {
 
   return (
     <motion.div
-      className="w-screen h-screenDynamic bg-bgModalOverlay flex justify-center items-center absolute top-0 left-0 z-20"
+      className="w-screen h-screenDynamic bg-bgModalOverlay flex justify-center items-start absolute top-0 left-0 z-20"
       variants={variants}
       initial="initial"
       animate="visible"
@@ -53,7 +53,7 @@ const Modal = ({ modalType }: Props) => {
     >
       <motion.section
         ref={ref}
-        className={`w-full h-full relative bg-darkMain rounded-sm p-6 md:p-12 sm:modal-shadow ${modalShadows[modalType]} sm:w-fit sm:h-fit`}
+        className={`w-full h-full relative bg-darkMain rounded-sm p-6 mt-[70px] sm:mt-24 sm:p-8 sm:modal-shadow ${modalShadows[modalType]} sm:w-fit sm:h-fit 2xl:mt-44`}
         variants={variants}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
