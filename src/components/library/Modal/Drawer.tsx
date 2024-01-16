@@ -68,7 +68,6 @@ const Drawer = ({ projects, handleCloseMenu }: Props) => {
         </div>
 
         <MenuContent projects={projects} onClick={handleCloseMenu} />
-
       </motion.section>
     </motion.div>
   );
