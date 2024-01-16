@@ -48,7 +48,7 @@ const Navigation = ({ projects }: Props) => {
   };
 
   return (
-    <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center 3xl:h-[100px] z-10">
+    <nav className="w-full h-navHeight bg-bgDarkMain flex justify-center items-center 3xl:h-[100px] z-20">
       <div className="w-full h-full max-w-screen-3xl flex justify-between items-center px-1 md:px-16 lg:px-20 2xl:px-40">
         <motion.div
           className="h-full py-4 hidden md:block"
