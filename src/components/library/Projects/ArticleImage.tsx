@@ -9,22 +9,38 @@ interface Props {
   maxImageSize?: number;
 }
 
-const ArticleImage = ({ project, maxImageSize = 400 }: Props) => {
+const ArticleImage = ({ project, maxImageSize = 350 }: Props) => {
   const url = getImageUrl(project?.mainImage);
   const imageWidth = getImageDimensions(project?.mainImage).width;
   const imageHeight = getImageDimensions(project?.mainImage).height;
-  const imageRatio = imageWidth / imageHeight;
+  const isStandingImage = imageHeight > imageWidth;
+  const imageRatio = isStandingImage
+    ? imageHeight / imageWidth
+    : imageWidth / imageHeight;
 
-  const imageDimensions = {
-    width: imageWidth > maxImageSize ? maxImageSize : imageWidth,
-    height: imageWidth > maxImageSize ? maxImageSize / imageRatio : imageHeight,
+  const getDimensions = () => {
+    if (isStandingImage) {
+      const maxHeight = maxImageSize * 0.75;
+      const width =
+        imageHeight > maxHeight
+          ? Math.round(maxHeight / imageRatio)
+          : imageWidth;
+      const height = imageHeight > maxHeight ? maxHeight : imageHeight;
+      return { width, height };
+    }
+    const width = imageWidth > maxImageSize ? maxImageSize : imageWidth;
+    const height =
+      imageWidth > maxImageSize
+        ? Math.round(maxImageSize / imageRatio)
+        : imageHeight;
+    return { width, height };
   };
 
   return (
     <Image
       src={url}
-      width={imageDimensions.width}
-      height={Math.round(imageDimensions.height)}
+      width={getDimensions().width}
+      height={getDimensions().height}
       alt={
         project?.mainImage.alt || "Very unfortunate, this image has no alt text"
       }

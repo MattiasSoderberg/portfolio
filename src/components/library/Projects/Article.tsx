@@ -23,7 +23,7 @@ const Article = ({
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
           exit={{ opacity: 0 }}
-          className="w-full h-full max-w-[100%] flex flex-col gap-8 overflow-y-auto custom-scrollbar"
+          className="w-full h-full max-w-[100%] flex flex-col gap-8 pr-2 overflow-y-auto custom-scrollbar"
         >
           <H1>{currentProject?.title}</H1>
           {currentProject?.mainImage && (
@@ -37,8 +37,11 @@ const Article = ({
             {currentProject?.url && (
               <Link href={currentProject?.url} target>
                 <SVGGradientWrapper
-                  IconElement={IoOpenOutline}
                   iconId={currentProject?._id}
+                  IconElement={IoOpenOutline}
+                  attribute="stroke"
+                  fromColor="secondLight"
+                  toColor="secondLighter"
                 />
               </Link>
             )}
