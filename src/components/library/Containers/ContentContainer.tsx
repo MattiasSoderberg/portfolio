@@ -51,9 +51,6 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
         initial="initial"
         animate={path === "/" && "visible"}
       >
-        <div className="w-full h-full flex justify-between gap-4 py-8 px-5 overflow-hidden md:gap-8 2xl:gap-16 sm:p-12 lg:p-16 xl:p-20 3xl:p-28">
-          {children}
-        </div>
         <Corner
           position={POSITIONS.topLeft}
           color={!!slug ? "projects" : "landing"}
@@ -70,6 +67,9 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
           position={POSITIONS.bottomRight}
           color={!!slug ? "projects" : "landing"}
         />
+        <div className="w-full h-full flex justify-between gap-4 py-8 px-5 overflow-hidden relative z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-16 xl:p-20 3xl:p-28">
+          {children}
+        </div>
       </motion.div>
     </section>
   );
