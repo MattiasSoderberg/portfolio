@@ -22,7 +22,7 @@ const Modal = ({ modalType }: Props) => {
     projects: "shadow-secondMain",
   };
 
-  const modal = modalTypes[modalType];
+  const content = modalTypes[modalType];
 
   const variants = {
     initial: { opacity: 0 },
@@ -54,7 +54,7 @@ const Modal = ({ modalType }: Props) => {
       <div className="w-full h-full max-w-screen-3xl max-h-screen-3xl flex justify-center items-center p-0 md:py-16">
         <motion.section
           ref={ref}
-          className={`w-full h-full max-h-full relative bg-darkMain rounded-sm p-6 sm:p-8 sm:modal-shadow ${modalShadows[modalType]} overflow-y-auto custom-scrollbar sm:w-fit sm:h-fit`}
+          className={`w-full h-fit max-h-full relative bg-darkMain rounded-sm p-6 sm:p-8 sm:modal-shadow ${modalShadows[modalType]} overflow-y-auto custom-scrollbar sm:w-fit`}
           variants={variants}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2, ease: "easeInOut" }}
@@ -70,7 +70,7 @@ const Modal = ({ modalType }: Props) => {
               <IoCloseOutline />
             </ButtonNaked>
           </div>
-          {modal}
+          {content}
         </motion.section>
       </div>
     </motion.div>
