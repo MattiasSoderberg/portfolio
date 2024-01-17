@@ -96,7 +96,7 @@ const ContactContent = () => {
       <H2>Contact</H2>
       <form
         ref={form}
-        className="flex flex-col gap-4 text-lg mb-8"
+        className="flex flex-col gap-4 text-lg"
         onSubmit={(e) => onSubmit(e)}
       >
         <WrapperWErrorMsg name="name" errors={validationErrors}>
@@ -128,35 +128,31 @@ const ContactContent = () => {
             placeholder="Message"
           />
         </WrapperWErrorMsg>
-        {responseMessage.status === 200 ? (
-          <ButtonStandard background="bg-[#363738]" onClick={closeModal}>
-            Close
-          </ButtonStandard>
-        ) : (
-          <ButtonStandard type="submit">Send</ButtonStandard>
-        )}
-        {responseMessage.isSending ? (
-          <TextLarge>{responseMessage?.message}</TextLarge>
-        ) : (
-          responseMessage.message && (
-            <TextLarge
-              color={
-                responseMessage.status !== 200 ? "thirdLight" : "secondMain"
-              }
-            >
-              {responseMessage?.message}
-            </TextLarge>
-          )
-        )}
+        <div className="w-full flex flex-col pb-10 relative">
+          {responseMessage.status === 200 ? (
+            <ButtonStandard background="bg-[#363738]" onClick={closeModal}>
+              Close
+            </ButtonStandard>
+          ) : (
+            <ButtonStandard type="submit">Send</ButtonStandard>
+          )}
+          <div className="absolute left-0 bottom-0">
+            {responseMessage.isSending ? (
+              <TextLarge>{responseMessage?.message}</TextLarge>
+            ) : (
+              responseMessage.message && (
+                <TextLarge
+                  color={
+                    responseMessage.status !== 200 ? "thirdLight" : "secondMain"
+                  }
+                >
+                  {responseMessage?.message}
+                </TextLarge>
+              )
+            )}
+          </div>
+        </div>
       </form>
-      {/* <div className="h-fit">
-        {validationErrors.length > 0 &&
-          validationErrors.map((error) => (
-            <TextLarge color="thirdLight" key={error?.message}>
-              {error?.message}
-            </TextLarge>
-          ))}
-      </div> */}
     </div>
   );
 };
