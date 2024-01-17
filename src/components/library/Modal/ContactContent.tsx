@@ -96,7 +96,7 @@ const ContactContent = () => {
       <H2>Contact</H2>
       <form
         ref={form}
-        className="flex flex-col gap-4 text-lg"
+        className="flex flex-col gap-5 text-lg"
         onSubmit={(e) => onSubmit(e)}
       >
         <WrapperWErrorMsg name="name" errors={validationErrors}>
