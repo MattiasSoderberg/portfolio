@@ -120,11 +120,7 @@ const ContactContent = () => {
             placeholder="Email"
           />
         </WrapperWErrorMsg>
-        <WrapperWErrorMsg
-          name="message"
-          errors={validationErrors}
-          paddingBottom="6"
-        >
+        <WrapperWErrorMsg name="message" errors={validationErrors}>
           <Textarea
             disabled={
               responseMessage?.status === 200 || responseMessage.isSending
