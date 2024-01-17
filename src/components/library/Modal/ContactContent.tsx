@@ -88,7 +88,7 @@ const ContactContent = () => {
   };
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-8 p-4 sm:w-[400px] 2xl:w-[500px]">
+    <div className="w-full h-full flex flex-col gap-8 p-4 sm:w-[400px] 2xl:w-[500px]">
       <H2>Contact</H2>
       <form
         ref={form}
@@ -135,7 +135,7 @@ const ContactContent = () => {
           )
         )}
       </form>
-      <div className="h-fit min-h-[90px]">
+      <div className="h-fit">
         {validationErrors.length > 0 &&
           validationErrors.map((error) => (
             <TextLarge color="thirdLight" key={error?.message}>
