@@ -15,17 +15,21 @@ const Textarea = ({
 }: Props) => {
   const baseClasses =
     "w-full p-3 rounded-sm resize-none placeholder:text-darkLighter";
-  const activeClasses = "p-3 input-focus shadow-thirdMain bg-lightDark";
-  const disabledClasses = "p-3 bg-lightDarker";
+  const activeClasses = "input-focus shadow-thirdMain bg-lightDark";
+  const disabledClasses = "bg-lightDarker";
   return (
-    <textarea
-      className={`${baseClasses} ${disabled ? disabledClasses : activeClasses}`}
-      disabled={disabled}
-      rows={8}
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <div className="w-full pb-5">
+      <textarea
+        className={`${baseClasses} ${
+          disabled ? disabledClasses : activeClasses
+        }`}
+        disabled={disabled}
+        rows={8}
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
   );
 };
 

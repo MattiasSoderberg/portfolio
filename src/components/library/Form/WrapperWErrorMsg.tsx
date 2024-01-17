@@ -7,19 +7,13 @@ interface Props {
   children: React.ReactNode;
   name: string;
   errors: ValidationError[];
-  paddingBottom?: string;
 }
 
-const WrapperWErrorMsg = ({
-  children,
-  name,
-  errors,
-  paddingBottom = "7",
-}: Props) => {
+const WrapperWErrorMsg = ({ children, name, errors }: Props) => {
   const error = errors.find((error) => error?.path === name) || null;
 
   return (
-    <div className={`w-full pb-${paddingBottom} relative`}>
+    <div className="w-full relative">
       {children}
       <AnimatePresence>
         {error && (
