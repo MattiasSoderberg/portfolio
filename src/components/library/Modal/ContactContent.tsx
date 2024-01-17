@@ -140,7 +140,9 @@ const ContactContent = () => {
               Close
             </ButtonStandard>
           ) : (
-            <ButtonStandard type="submit">Send</ButtonStandard>
+            <ButtonStandard type="submit" disabled={responseMessage.isSending}>
+              {responseMessage.isSending ? "Sending..." : "Send"}
+            </ButtonStandard>
           )}
           <div className="absolute left-0 bottom-0">
             {responseMessage.isSending ? (
