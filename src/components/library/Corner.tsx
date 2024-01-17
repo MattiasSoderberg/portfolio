@@ -30,7 +30,7 @@ const Corner = ({ position, small = false, color = "landing" }: Props) => {
   const cornerClasses = `absolute ${positionClasses[position]}`;
   const styleClasses = `${
     color == "landing" ? "bg-firstMain" : "bg-secondMain"
-  } transition-colors duration-500 ease-out rounded-s-lg overflow-hidden`;
+  } transition-colors duration-500 ease-out overflow-hidden`;
 
   const variants = {
     initial:
