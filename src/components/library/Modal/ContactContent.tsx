@@ -102,7 +102,9 @@ const ContactContent = () => {
         <WrapperWErrorMsg name="name" errors={validationErrors}>
           <Input
             focus
-            disabled={responseMessage?.status === 200}
+            disabled={
+              responseMessage?.status === 200 || responseMessage.isSending
+            }
             value={nameInputValue}
             onChange={handleOnInputChange}
             placeholder="Name"
@@ -110,7 +112,9 @@ const ContactContent = () => {
         </WrapperWErrorMsg>
         <WrapperWErrorMsg name="email" errors={validationErrors}>
           <Input
-            disabled={responseMessage?.status === 200}
+            disabled={
+              responseMessage?.status === 200 || responseMessage.isSending
+            }
             value={emailInputValue}
             onChange={handleOnEmailInputChange}
             placeholder="Email"
@@ -122,7 +126,9 @@ const ContactContent = () => {
           paddingBottom="6"
         >
           <Textarea
-            disabled={responseMessage?.status === 200}
+            disabled={
+              responseMessage?.status === 200 || responseMessage.isSending
+            }
             value={messageInputValue}
             onChange={handleOnMessageInputChange}
             placeholder="Message"
