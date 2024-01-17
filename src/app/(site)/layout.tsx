@@ -26,9 +26,7 @@ export default async function RootLayout({
       <body className="w-screen h-screenSmall flex flex-col items-start relative overflow-hidden">
         <ModalProvider>
           <Navigation projects={projects} />
-          <main className="w-full h-full flex flex-col items-center bg-darkMain overflow-hidden">
-            <ContentContainer>{children}</ContentContainer>
-          </main>
+          <ContentContainer>{children}</ContentContainer>
         </ModalProvider>
         <Analytics />
       </body>

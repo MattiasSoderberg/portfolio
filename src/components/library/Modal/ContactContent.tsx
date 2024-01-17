@@ -6,6 +6,7 @@ import { H2, TextLarge } from "../Typography";
 import Textarea from "../Form/Textarea";
 import ButtonStandard from "../Button/variants/ButtonStandard";
 import useModal from "@/hooks/useModal";
+import WrapperWErrorMsg from "../Form/WrapperWErrorMsg";
 
 type ResponseMessage = {
   isSending: boolean;
@@ -40,9 +41,12 @@ const ContactContent = () => {
   };
 
   const formSchema = yup.object({
-    name: yup.string().required(),
-    email: yup.string().required().email(),
-    message: yup.string().required(),
+    name: yup.string().required("Name is required"),
+    email: yup
+      .string()
+      .required("Email is required")
+      .email("Must be a valid email"),
+    message: yup.string().required("Message is required"),
   });
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -88,61 +92,75 @@ const ContactContent = () => {
   };
 
   return (
-    <div className="w-full h-full overflow-y-auto flex flex-col gap-8 p-4 sm:w-[400px] 2xl:w-[500px]">
+    <div className="w-full h-full flex flex-col gap-8 p-4 sm:w-[400px] 2xl:w-[500px]">
       <H2>Contact</H2>
       <form
         ref={form}
-        className="flex flex-col gap-8 text-lg"
+        className="flex flex-col gap-4 text-lg"
         onSubmit={(e) => onSubmit(e)}
       >
-        <Input
-          focus
-          disabled={responseMessage?.status === 200}
-          value={nameInputValue}
-          onChange={handleOnInputChange}
-          placeholder="Name"
-        />
-        <Input
-          disabled={responseMessage?.status === 200}
-          value={emailInputValue}
-          onChange={handleOnEmailInputChange}
-          placeholder="Email"
-        />
-        <Textarea
-          disabled={responseMessage?.status === 200}
-          value={messageInputValue}
-          onChange={handleOnMessageInputChange}
-          placeholder="Message"
-        />
-        {responseMessage.status === 200 ? (
-          <ButtonStandard background="bg-[#363738]" onClick={closeModal}>
-            Close
-          </ButtonStandard>
-        ) : (
-          <ButtonStandard type="submit">Send</ButtonStandard>
-        )}
-        {responseMessage.isSending ? (
-          <TextLarge>{responseMessage?.message}</TextLarge>
-        ) : (
-          responseMessage.message && (
-            <TextLarge
-              color={
-                responseMessage.status !== 200 ? "thirdLight" : "secondMain"
-              }
-            >
-              {responseMessage?.message}
-            </TextLarge>
-          )
-        )}
+        <WrapperWErrorMsg name="name" errors={validationErrors}>
+          <Input
+            focus
+            disabled={
+              responseMessage?.status === 200 || responseMessage.isSending
+            }
+            value={nameInputValue}
+            onChange={handleOnInputChange}
+            placeholder="Name"
+          />
+        </WrapperWErrorMsg>
+        <WrapperWErrorMsg name="email" errors={validationErrors}>
+          <Input
+            disabled={
+              responseMessage?.status === 200 || responseMessage.isSending
+            }
+            value={emailInputValue}
+            onChange={handleOnEmailInputChange}
+            placeholder="Email"
+          />
+        </WrapperWErrorMsg>
+        <WrapperWErrorMsg
+          name="message"
+          errors={validationErrors}
+          paddingBottom="6"
+        >
+          <Textarea
+            disabled={
+              responseMessage?.status === 200 || responseMessage.isSending
+            }
+            value={messageInputValue}
+            onChange={handleOnMessageInputChange}
+            placeholder="Message"
+          />
+        </WrapperWErrorMsg>
+        <div className="w-full flex flex-col pb-10 relative">
+          {responseMessage.status === 200 ? (
+            <ButtonStandard background="bg-[#363738]" onClick={closeModal}>
+              Close
+            </ButtonStandard>
+          ) : (
+            <ButtonStandard type="submit" disabled={responseMessage.isSending}>
+              {responseMessage.isSending ? "Sending..." : "Send"}
+            </ButtonStandard>
+          )}
+          <div className="absolute left-0 bottom-0">
+            {responseMessage.isSending ? (
+              <TextLarge>{responseMessage?.message}</TextLarge>
+            ) : (
+              responseMessage.message && (
+                <TextLarge
+                  color={
+                    responseMessage.status !== 200 ? "thirdLight" : "secondMain"
+                  }
+                >
+                  {responseMessage?.message}
+                </TextLarge>
+              )
+            )}
+          </div>
+        </div>
       </form>
-      <div className="h-fit min-h-[90px]">
-        {validationErrors.length > 0 &&
-          validationErrors.map((error) => (
-            <TextLarge color="thirdLight" key={error?.message}>
-              {error?.message}
-            </TextLarge>
-          ))}
-      </div>
     </div>
   );
 };

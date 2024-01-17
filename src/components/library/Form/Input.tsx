@@ -17,7 +17,7 @@ const Input = ({
   focus = false,
   disabled = false,
 }: Props) => {
-  const baseClasses = "p-3 rounded-sm placeholder:text-darkLighter";
+  const baseClasses = "w-full p-3 rounded-sm placeholder:text-darkLighter";
   const activeClasses = "input-focus shadow-thirdMain bg-lightDark";
   const disabledClasses = "bg-lightDarker";
   return (
