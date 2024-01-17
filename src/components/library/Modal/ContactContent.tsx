@@ -6,6 +6,7 @@ import { H2, TextLarge } from "../Typography";
 import Textarea from "../Form/Textarea";
 import ButtonStandard from "../Button/variants/ButtonStandard";
 import useModal from "@/hooks/useModal";
+import WrapperWErrorMsg from "../Form/WrapperWErrorMsg";
 
 type ResponseMessage = {
   isSending: boolean;
@@ -40,9 +41,12 @@ const ContactContent = () => {
   };
 
   const formSchema = yup.object({
-    name: yup.string().required(),
-    email: yup.string().required().email(),
-    message: yup.string().required(),
+    name: yup.string().required("Name is required"),
+    email: yup
+      .string()
+      .required("Email is required")
+      .email("Must be a valid email"),
+    message: yup.string().required("Message is required"),
   });
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -92,28 +96,38 @@ const ContactContent = () => {
       <H2>Contact</H2>
       <form
         ref={form}
-        className="flex flex-col gap-8 text-lg"
+        className="flex flex-col gap-4 text-lg mb-8"
         onSubmit={(e) => onSubmit(e)}
       >
-        <Input
-          focus
-          disabled={responseMessage?.status === 200}
-          value={nameInputValue}
-          onChange={handleOnInputChange}
-          placeholder="Name"
-        />
-        <Input
-          disabled={responseMessage?.status === 200}
-          value={emailInputValue}
-          onChange={handleOnEmailInputChange}
-          placeholder="Email"
-        />
-        <Textarea
-          disabled={responseMessage?.status === 200}
-          value={messageInputValue}
-          onChange={handleOnMessageInputChange}
-          placeholder="Message"
-        />
+        <WrapperWErrorMsg name="name" errors={validationErrors}>
+          <Input
+            focus
+            disabled={responseMessage?.status === 200}
+            value={nameInputValue}
+            onChange={handleOnInputChange}
+            placeholder="Name"
+          />
+        </WrapperWErrorMsg>
+        <WrapperWErrorMsg name="email" errors={validationErrors}>
+          <Input
+            disabled={responseMessage?.status === 200}
+            value={emailInputValue}
+            onChange={handleOnEmailInputChange}
+            placeholder="Email"
+          />
+        </WrapperWErrorMsg>
+        <WrapperWErrorMsg
+          name="message"
+          errors={validationErrors}
+          paddingBottom="6"
+        >
+          <Textarea
+            disabled={responseMessage?.status === 200}
+            value={messageInputValue}
+            onChange={handleOnMessageInputChange}
+            placeholder="Message"
+          />
+        </WrapperWErrorMsg>
         {responseMessage.status === 200 ? (
           <ButtonStandard background="bg-[#363738]" onClick={closeModal}>
             Close
@@ -135,14 +149,14 @@ const ContactContent = () => {
           )
         )}
       </form>
-      <div className="h-fit">
+      {/* <div className="h-fit">
         {validationErrors.length > 0 &&
           validationErrors.map((error) => (
             <TextLarge color="thirdLight" key={error?.message}>
               {error?.message}
             </TextLarge>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };

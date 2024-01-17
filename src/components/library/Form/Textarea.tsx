@@ -13,7 +13,8 @@ const Textarea = ({
   disabled = false,
   onChange,
 }: Props) => {
-  const baseClasses = "p-3 rounded-sm resize-none placeholder:text-darkLighter";
+  const baseClasses =
+    "w-full p-3 rounded-sm resize-none placeholder:text-darkLighter";
   const activeClasses = "p-3 input-focus shadow-thirdMain bg-lightDark";
   const disabledClasses = "p-3 bg-lightDarker";
   return (
