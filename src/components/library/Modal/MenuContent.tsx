@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ProjectList from "../Projects/ProjectList";
-import getData from "@/utils/getData";
 import { SanityValues } from "../../../../sanity.config";
 import Divider from "../Divider";
 import NextLink from "../NextLink";
-
 
 interface Props {
   projects: SanityValues["project"][];
@@ -12,7 +10,6 @@ interface Props {
 }
 
 const MenuContent = ({ projects, onClick }: Props) => {
-
   return (
     <div className="w-fit h-full flex flex-col gap-8">
       <ProjectList projects={projects} onClick={onClick} />

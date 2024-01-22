@@ -17,19 +17,23 @@ const Input = ({
   focus = false,
   disabled = false,
 }: Props) => {
-  const baseClasses = "p-3 rounded-sm placeholder:text-darkLighter";
+  const baseClasses = "w-full p-3 rounded-sm placeholder:text-darkLighter";
   const activeClasses = "input-focus shadow-thirdMain bg-lightDark";
   const disabledClasses = "bg-lightDarker";
   return (
-    <input
-      className={`${baseClasses} ${disabled ? disabledClasses : activeClasses}`}
-      disabled={disabled}
-      type={type}
-      autoFocus={focus}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-    />
+    <div className="w-full pb-7">
+      <input
+        className={`${baseClasses} ${
+          disabled ? disabledClasses : activeClasses
+        }`}
+        disabled={disabled}
+        type={type}
+        autoFocus={focus}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
+      />
+    </div>
   );
 };
 
