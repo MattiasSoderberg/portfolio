@@ -6,14 +6,17 @@ import getImageUrl from "@/utils/getImageUrl";
 import { TextRegular } from "./Typography";
 import ButtonStandard from "./Button/variants/ButtonStandard";
 import useModal from "@/hooks/useModal";
+import { SanityValues } from "../../../sanity.config";
 
 interface Props {
-  document: SanityDocument;
+  content: SanityValues["landingContent"]["landingFooter"];
 }
 
-const LandingFooter = ({ document }: Props) => {
-  const { landingFooter } = document;
+const LandingFooter = ({ content }: Props) => {
+  // const { landingFooter } = footerContent;
   const { openModal } = useModal();
+  const image = getImageUrl(content?.image);
+  console.log(image);
 
   const onClick = () => {
     openModal("contact");
@@ -24,8 +27,9 @@ const LandingFooter = ({ document }: Props) => {
       {/* <div className="w-fit h-fit min-w-[150px] min-h-[150px] relative rounded-full overflow-hidden filter grayscale 2xl:min-w-[200px] 2xl:min-h-[200px]"> */}
       <div className="min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px] relative rounded-full overflow-hidden filter grayscale xl:max-w-[200px] xl:min-h-[200px] xl:min-w-[200px] xl:max-h-[200px]">
         <Image
-          src={getImageUrl(landingFooter?.image)}
-          alt={landingFooter?.image.alt || "No alt text"}
+          src={getImageUrl(content?.image)}
+          // alt={content?.image.alt || "No alt text"}
+          alt={"No alt text"}
           fill
           sizes="(max-width: 200px) 150px, 200px"
           style={{
@@ -34,7 +38,7 @@ const LandingFooter = ({ document }: Props) => {
         />
       </div>
       <div className="w-full h-full flex flex-col items-center justify-end gap-5 sm:items-end xl:gap-10">
-        <TextRegular color="firstLighter">{landingFooter?.text}</TextRegular>
+        <TextRegular color="firstLighter">{content?.text}</TextRegular>
         <div className="p-0 sm:pr-10">
           <ButtonStandard
             background="bg-firstMain"
@@ -42,7 +46,7 @@ const LandingFooter = ({ document }: Props) => {
             fonts="text-base"
             onClick={onClick}
           >
-            {landingFooter?.buttonText}
+            {content?.buttonText}
           </ButtonStandard>
         </div>
       </div>

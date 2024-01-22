@@ -1,10 +1,27 @@
-import { createClient } from "next-sanity";
-
+// import "server-only";
+import { createClient, type ClientConfig, type QueryParams } from "next-sanity";
 import { apiVersion, dataset, projectId, useCdn } from "../env";
 
-export const client = createClient({
+const config: ClientConfig = {
   apiVersion,
   dataset,
   projectId,
   useCdn,
-});
+};
+
+export const client = createClient(config);
+
+export async function sanityFetch<QueryResponse>({
+  query,
+  qParams,
+  tags,
+}: {
+  query: string;
+  qParams?: QueryParams;
+  tags: string[];
+}): Promise<QueryResponse> {
+  return client.fetch<QueryResponse>(query, qParams, {
+    cache: "force-cache",
+    next: { tags },
+  });
+}

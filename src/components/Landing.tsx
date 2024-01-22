@@ -117,7 +117,7 @@ const Landing = ({ projects, landingContent }: Props) => {
           variants={getAnimation("child")}
           transition={{ duration: 0.4 }}
         >
-          <LandingFooter document={landingContent} />
+          <LandingFooter content={landingContent["landingFooter"]} />
         </motion.div>
       </motion.div>
 

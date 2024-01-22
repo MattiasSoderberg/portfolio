@@ -6,6 +6,9 @@ import ContentContainer from "@/components/library/Containers/ContentContainer";
 import { ModalProvider } from "@/context/ModalContext";
 import { Analytics } from "@vercel/analytics/react";
 import getData from "@/utils/getData";
+import { sanityFetch } from "../../../sanity/lib/client";
+import { projectsQuery } from "../../../sanity/lib/query";
+import { SanityValues } from "../../../sanity.config";
 
 const quicksand = Quicksand({ subsets: ["latin"] });
 
@@ -20,7 +23,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { projects } = await getData();
+  // const { projects } = await getData();
+  const projects: SanityValues["project"][] = await sanityFetch({
+    query: projectsQuery,
+    tags: ["project"],
+  });
+
   return (
     <html lang="en" className={quicksand.className}>
       <body className="w-screen h-screenSmall flex flex-col items-start relative overflow-hidden">
