@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { SanityValues } from "../../../../sanity.config";
 import NextLink from "../NextLink";
@@ -19,6 +20,7 @@ const ProjectList = ({ projects, rightPadding = false, onClick }: Props) => {
     initial: !isPageLoaded && path === "/" ? { opacity: 0 } : { opacity: 1 },
     visible: { opacity: 1 },
   };
+
   return (
     <motion.div
       variants={variants}

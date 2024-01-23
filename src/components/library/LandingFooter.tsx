@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { SanityDocument } from "next-sanity";
 import getImageUrl from "@/utils/getImageUrl";
 import { TextRegular } from "./Typography";
 import ButtonStandard from "./Button/variants/ButtonStandard";
@@ -13,7 +12,6 @@ interface Props {
 }
 
 const LandingFooter = ({ content }: Props) => {
-  // const { landingFooter } = footerContent;
   const { openModal } = useModal();
   const image = getImageUrl(content?.image);
   console.log(image);
@@ -24,7 +22,6 @@ const LandingFooter = ({ content }: Props) => {
 
   return (
     <div className="w-full h-fit flex flex-col items-center gap-4 sm:items-start sm:flex-row md:max-w-[90%] lg:gap-8 xl:max-w-[80%] 2xl:gap-16">
-      {/* <div className="w-fit h-fit min-w-[150px] min-h-[150px] relative rounded-full overflow-hidden filter grayscale 2xl:min-w-[200px] 2xl:min-h-[200px]"> */}
       <div className="min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px] relative rounded-full overflow-hidden filter grayscale xl:max-w-[200px] xl:min-h-[200px] xl:min-w-[200px] xl:max-h-[200px]">
         <Image
           src={getImageUrl(content?.image)}
