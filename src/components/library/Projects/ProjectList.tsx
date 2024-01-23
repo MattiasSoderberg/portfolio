@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { SanityValues } from "../../../../sanity.config";
 import NextLink from "../NextLink";
 import { H2 } from "../Typography";
@@ -28,6 +28,7 @@ const ProjectList = ({ projects, rightPadding = false, onClick }: Props) => {
       className="flex flex-col gap-8"
     >
       <H2>Projects</H2>
+      <NextLink href="/projects">Projects</NextLink>
       <motion.ul
         variants={variants}
         transition={{ staggerChildren: 0.2, duration: 0.2, ease: "easeOut" }}
@@ -45,6 +46,7 @@ const ProjectList = ({ projects, rightPadding = false, onClick }: Props) => {
             </motion.li>
           ))}
       </motion.ul>
+      {path !== "/" && <NextLink href="/">Home</NextLink>}
     </motion.div>
   );
 };
