@@ -8,10 +8,10 @@ export default async function Home() {
     query: projectsQuery,
     tags: ["project"],
   });
-  const landingContent: SanityValues["landingContent"][] = await sanityFetch({
+  const landingContent: SanityValues["landingContent"] = await sanityFetch({
     query: landingContentQuery,
     tags: ["landingContent"],
   });
 
-  return <Landing projects={projects} landingContent={landingContent[0]} />;
+  return <Landing projects={projects} landingContent={landingContent} />;
 }
