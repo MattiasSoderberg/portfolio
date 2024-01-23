@@ -1,11 +1,9 @@
-import getData from "@/utils/getData";
 import { MetadataRoute } from "next";
 import { sanityFetch } from "../../sanity/lib/client";
 import { projectsQuery } from "../../sanity/lib/query";
 import { SanityValues } from "../../sanity.config";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // const { projects } = await getData();
   const projects: SanityValues["project"][] = await sanityFetch({
     query: projectsQuery,
     tags: ["project"],
