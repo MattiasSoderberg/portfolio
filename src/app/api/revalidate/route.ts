@@ -4,10 +4,10 @@ import { parseBody } from "next-sanity/webhook";
 
 export async function POST(req: NextRequest) {
   try {
-    const { body, isValidSignature } = await parseBody<{ _type: string }>(
-      req,
-      process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET
-    );
+    const { body, isValidSignature } = await parseBody<{
+      _type: string;
+      slug: string;
+    }>(req, process.env.NEXT_PUBLIC_SANITY_HOOK_SECRET);
 
     if (!isValidSignature) {
       return new Response("Invalid Signature", { status: 401 });
@@ -18,6 +18,11 @@ export async function POST(req: NextRequest) {
     }
 
     revalidateTag(body._type);
+
+    if (body?.slug) {
+      revalidateTag(`${body._type}:${body.slug}`);
+    }
+
     return NextResponse.json({
       status: 200,
       revalidated: true,

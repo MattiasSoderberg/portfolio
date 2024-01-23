@@ -6,7 +6,7 @@ const config: ClientConfig = {
   apiVersion,
   dataset,
   projectId,
-  useCdn,
+  useCdn: process.env.NODE_ENV === "development" ? true : false,
 };
 
 export const client = createClient(config);
@@ -21,7 +21,7 @@ export async function sanityFetch<QueryResponse>({
   tags: string[];
 }): Promise<QueryResponse> {
   return client.fetch<QueryResponse>(query, qParams, {
-    cache: "force-cache",
+    cache: process.env.NODE_ENV === "development" ? "no-store" : "force-cache",
     next: { tags },
   });
 }
