@@ -1,21 +1,31 @@
 import Projects from "@/components/library/Projects/Projects";
 import { TextRegular } from "@/components/library/Typography";
-import getData from "@/utils/getData";
 import { SanityValues } from "../../../../../sanity.config";
 import { sanityFetch } from "../../../../../sanity/lib/client";
-import { projectsQuery } from "../../../../../sanity/lib/query";
+import {
+  oneProjectQuery,
+  projectsQuery,
+} from "../../../../../sanity/lib/query";
+import ProjectView from "@/components/library/Projects/ProjectView";
 
-export default async function Page() {
-  // const { projects } = await getData();
+export default async function ProjectPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const project: SanityValues["project"] = await sanityFetch({
+    query: oneProjectQuery,
+    tags: ["project"],
+    qParams: { slug: params.slug },
+  });
+  return <ProjectView project={project} />;
+}
+
+export async function generateStaticParams() {
   const projects: SanityValues["project"][] = await sanityFetch({
     query: projectsQuery,
     tags: ["project"],
   });
-  return <Projects projects={projects} />;
-}
-
-export async function generateStaticParams() {
-  const { projects } = await getData();
   return projects.map((project) => ({
     slug: project?.slug?.current as string,
   }));
