@@ -13,6 +13,7 @@ export default async function ProjectsLayout({
     query: projectsQuery,
     tags: ["project"],
   });
+
   return (
     <>
       {children}
