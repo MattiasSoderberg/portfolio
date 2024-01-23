@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { POSITIONS } from "../Corner";
@@ -8,11 +7,16 @@ import Corner from "../Corner";
 import { useParams, usePathname } from "next/navigation";
 import { useModalContext } from "@/context/ModalContext";
 
+type ThemeColor = "projects" | "landing";
+
 const ContentContainer = ({ children }: { children: React.ReactNode }) => {
   const path = usePathname();
   const params = useParams();
   const { slug } = params;
   const { handleSetPageLoaded } = useModalContext();
+
+  const themeColor: ThemeColor =
+    !!slug || path.split("/")[1] === "projects" ? "projects" : "landing";
 
   const parentVariants = {
     initial:
@@ -53,22 +57,10 @@ const ContentContainer = ({ children }: { children: React.ReactNode }) => {
           initial="initial"
           animate={path === "/" && "visible"}
         >
-          <Corner
-            position={POSITIONS.topLeft}
-            color={!!slug ? "projects" : "landing"}
-          />
-          <Corner
-            position={POSITIONS.topRight}
-            color={!!slug ? "projects" : "landing"}
-          />
-          <Corner
-            position={POSITIONS.bottomLeft}
-            color={!!slug ? "projects" : "landing"}
-          />
-          <Corner
-            position={POSITIONS.bottomRight}
-            color={!!slug ? "projects" : "landing"}
-          />
+          <Corner position={POSITIONS.topLeft} color={themeColor} />
+          <Corner position={POSITIONS.topRight} color={themeColor} />
+          <Corner position={POSITIONS.bottomLeft} color={themeColor} />
+          <Corner position={POSITIONS.bottomRight} color={themeColor} />
           <section className="w-full h-full flex justify-between gap-4 py-8 px-5 overflow-hidden relative z-10 md:gap-8 2xl:gap-16 sm:p-12 lg:p-16 xl:p-20 3xl:p-28">
             {children}
           </section>
