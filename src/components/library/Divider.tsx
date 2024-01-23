@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -21,9 +22,6 @@ const Divider = ({
     color == "landing" ? "bg-firstMain" : "bg-secondMain"
   } rounded-s-lg transition-colors duration-500 ease-out overflow-hidden`;
 
-  // const classes = horizontal
-  //   ? `divider-linear-gradient-horizontal ${horizontalSize}`
-  //   : `divider-linear-gradient-vertical self-center ${verticalSize}`;
   return (
     <motion.div
       className={`${
