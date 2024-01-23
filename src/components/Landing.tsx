@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { H1, H2, TextLarge } from "./library/Typography";
 import Divider from "./library/Divider";
