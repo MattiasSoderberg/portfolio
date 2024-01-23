@@ -1,16 +1,17 @@
 "use client";
 import React from "react";
-import ProjectList from "./ProjectList";
 import { SanityValues } from "../../../../sanity.config";
+import { H1 } from "../Typography";
+import Article from "./Article";
 
 interface Props {
-  projects: SanityValues["project"][];
+  project: SanityValues["project"];
 }
 
-const Projects = ({ projects }: Props) => {
+const Projects = ({ project }: Props) => {
   return (
-    <div className="w-full flex">
-      <ProjectList projects={projects} />
+    <div className="w-full flex flex-col">
+      {project ? <Article currentProject={project} /> : <H1>Projects</H1>}
     </div>
   );
 };
